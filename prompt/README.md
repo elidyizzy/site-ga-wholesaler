@@ -1,0 +1,36 @@
+# Prompts de imagem — GA Food Wholesaler
+
+Cada `.txt` nesta pasta já é um prompt completo, pronto pra colar direto num
+gerador de imagem (Midjourney, DALL·E, Nano Banana, Ideogram, etc). O
+prefixo de estilo (paleta, luz, enquadramento) já vem embutido em cada
+arquivo — não precisa combinar nada manualmente.
+
+| Arquivo | Onde entra no site |
+|---|---|
+| `01-hero.txt` | Home — hero |
+| `02-diagnostico-estrategia.txt` | Private Label 360° — etapa 1 |
+| `03-desenvolvimento-produto.txt` | Private Label 360° — etapa 2 |
+| `04-branding-design.txt` | Private Label 360° — etapa 3 |
+| `05-embalagem.txt` | Private Label 360° — etapa 4 |
+| `06-registros-regulatorio.txt` | Private Label 360° — etapa 5 |
+| `07-producao-logistica.txt` | Private Label 360° — etapa 6 |
+| `08-lancamento-suporte.txt` | Private Label 360° — etapa 7 |
+| `09-vertical-cafe.txt` | Página Café Private Label |
+| `10-segmento-cafeterias.txt` | Para Quem É — cafeterias e restaurantes |
+| `11-segmento-emporios.txt` | Para Quem É — empórios e mercados |
+| `12-segmento-distribuidores.txt` | Para Quem É — distribuidores e atacadistas |
+| `13-segmento-redes-supermercados.txt` | Para Quem É — redes e supermercados |
+| `14-segmento-empresas-escritorios.txt` | Para Quem É — empresas e escritórios |
+| `15-segmento-criadores-empreendedores.txt` | Para Quem É — criadores e empreendedores |
+
+## Regras gerais
+
+- Sempre pedir **variações sem texto/rótulo legível** nas embalagens (o rótulo real da GA Food entra depois).
+- Evitar: café em toda imagem (a empresa não é só torrefação), pessoas "vendedoras" olhando pra câmera, qualquer cor saturada fora da paleta da marca.
+- Manter a mesma "sessão de fotos" — não misturar estilos diferentes entre as imagens do site.
+
+## Depois de gerar
+
+Salvar os arquivos finais em `src/assets/` no projeto, nomeados igual ao
+slug do prompt (ex: `hero.jpg`, `segmento-cafeterias.jpg`) — o Astro otimiza
+automaticamente via `astro:assets` quando importados no código.

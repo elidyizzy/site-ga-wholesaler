@@ -47,7 +47,7 @@ Direção obrigatória (briefing, seções 10 e 15):
 - Estética clean, premium, luz natural, paleta neutra/quente coerente com a paleta acima.
 - Sem estoque genérico óbvio, sem selo/badge espalhado pela imagem.
 
-Como não há banco de fotos real da GA Food, as imagens serão geradas por IA externa seguindo um prompt-base consistente (ver prompts gerados separadamente) para manter a mesma "sessão de fotos" visual em todas as páginas.
+Como não há banco de fotos real da GA Food, as imagens serão geradas por IA externa seguindo os prompts em `prompt/` (um arquivo `.txt` por imagem, ver `prompt/README.md`) para manter a mesma "sessão de fotos" visual em todas as páginas.
 
 ## Ícones
 
