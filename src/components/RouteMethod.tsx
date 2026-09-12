@@ -73,7 +73,7 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 								viewport={{ once: true, margin: "-35% 0px -35% 0px" }}
 								variants={markerVariants}
 								transition={{ duration: 0.5, ease: "easeOut" }}
-								className="absolute top-1 left-6 z-10 flex size-11 -translate-x-1/2 items-center justify-center rounded-full border-2 md:left-1/2"
+								className="absolute top-1 left-6 z-10 flex size-11 -translate-x-1/2 items-center justify-center rounded-full border-2 shadow-[var(--shadow-lift-1)] md:left-1/2"
 							>
 								<motion.span variants={numeralVariants} className="text-sm font-semibold tabular-nums">
 									{stage.numero}
@@ -92,7 +92,7 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 										: "flex flex-col gap-4 md:ml-auto md:w-[calc(50%-3rem)] md:items-start"
 								}
 							>
-								<div className="aspect-4/5 w-full max-w-sm overflow-hidden">
+								<div className="aspect-4/5 w-full overflow-hidden rounded-2xl shadow-[var(--shadow-lift-2)]">
 									<img
 										src={stage.imagemSrc}
 										alt={stage.imagemAlt}

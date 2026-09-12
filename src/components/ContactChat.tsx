@@ -59,7 +59,7 @@ export default function ContactChat({ whatsappNumber }: Props) {
 	)}`
 
 	return (
-		<div className="mx-auto max-w-lg overflow-hidden rounded-2xl border border-border bg-background text-left shadow-[0_20px_60px_-20px_rgba(33,29,24,0.25)]">
+		<div className="mx-auto max-w-lg overflow-hidden rounded-3xl border border-border bg-background text-left shadow-[var(--shadow-lift-3)]">
 			<div className="flex items-center gap-3 border-b border-border bg-secondary px-5 py-4">
 				<div className="flex size-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
 					<MessageCircle className="size-4" />
@@ -94,7 +94,7 @@ export default function ContactChat({ whatsappNumber }: Props) {
 								onChange={(e) => setInputValue(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleNext()}
 								placeholder={QUESTIONS[step].placeholder}
-								className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+								className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 focus:outline-none"
 							/>
 						) : (
 							<textarea
@@ -103,14 +103,14 @@ export default function ContactChat({ whatsappNumber }: Props) {
 								onChange={(e) => setInputValue(e.target.value)}
 								placeholder={QUESTIONS[step].placeholder}
 								rows={3}
-								className="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+								className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 focus:outline-none"
 							/>
 						)}
 						{error && <p className="text-xs text-destructive">{error}</p>}
 						<button
 							type="button"
 							onClick={handleNext}
-							className="inline-flex h-10 items-center justify-center gap-2 self-end rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95"
+							className="inline-flex h-10 items-center justify-center gap-2 self-end rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-1)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-2)] active:scale-95"
 						>
 							{step === 2 ? "Concluir" : "Continuar"}
 							<ArrowRight className="size-4" />
@@ -133,7 +133,7 @@ export default function ContactChat({ whatsappNumber }: Props) {
 							href={whatsappHref}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-primary px-7 text-sm font-medium text-primary-foreground shadow-[0_8px_30px_-8px_rgba(138,109,80,0.6)] transition-transform hover:scale-[1.03] active:scale-95"
+							className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-2)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-3)] active:scale-95"
 						>
 							Enviar mensagem
 							<MessageCircle className="size-4" />
