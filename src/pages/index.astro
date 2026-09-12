@@ -3,7 +3,7 @@ import { Image, getImage } from "astro:assets"
 import Layout from "@/layouts/Layout.astro"
 import RouteMethod, { type Stage } from "@/components/RouteMethod"
 import ContactChat from "@/components/ContactChat"
-import { ArrowRight, Mail, MessageCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 import logo from "@/assets/logo.png"
 import logoWhite from "@/assets/logo-white.png"
@@ -353,70 +353,93 @@ const segmentos = [
 					<ContactChat whatsappNumber="5531967777753" client:visible />
 				</div>
 
-				<div class="mt-16">
-					<p class="text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase">
-						Nossos canais de relacionamento
-					</p>
-					<div class="mt-5 grid gap-4 sm:grid-cols-3">
-						<a
-							href="mailto:tranding@gafood.com.br"
-							class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background px-5 py-6 shadow-[var(--shadow-lift-1)] transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[var(--shadow-lift-2)]"
-						>
-							<span class="flex size-11 items-center justify-center rounded-full bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-								<Mail className="size-5" />
-							</span>
-							<span class="text-sm font-medium text-foreground">E-mail</span>
-							<span class="text-xs text-muted-foreground">tranding@gafood.com.br</span>
-						</a>
-						<a
-							href="https://wa.me/5531967777753"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background px-5 py-6 shadow-[var(--shadow-lift-1)] transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[var(--shadow-lift-2)]"
-						>
-							<span class="flex size-11 items-center justify-center rounded-full bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-								<MessageCircle className="size-5" />
-							</span>
-							<span class="text-sm font-medium text-foreground">WhatsApp</span>
-							<span class="text-xs text-muted-foreground">31 96777-7753</span>
-						</a>
-						<a
-							href="https://instagram.com/gafoodb2b"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background px-5 py-6 shadow-[var(--shadow-lift-1)] transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[var(--shadow-lift-2)]"
-						>
-							<span class="flex size-11 items-center justify-center rounded-full bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.5"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="size-5"
-								>
-									<rect x="3" y="3" width="18" height="18" rx="5" />
-									<circle cx="12" cy="12" r="4" />
-									<circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-								</svg>
-							</span>
-							<span class="text-sm font-medium text-foreground">Instagram</span>
-							<span class="text-xs text-muted-foreground">@gafoodb2b</span>
-						</a>
-					</div>
-				</div>
+				<p class="mt-8 text-sm text-muted-foreground">
+					Prefere outro canal?
+					<a href="mailto:tranding@gafood.com.br" class="text-primary underline-offset-4 hover:underline">
+						E-mail
+					</a>
+					<span class="px-1.5 text-border">·</span>
+					<a
+						href="https://wa.me/5531967777753"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-primary underline-offset-4 hover:underline"
+					>
+						WhatsApp
+					</a>
+					<span class="px-1.5 text-border">·</span>
+					<a
+						href="https://instagram.com/gafoodb2b"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-primary underline-offset-4 hover:underline"
+					>
+						Instagram
+					</a>
+				</p>
 			</div>
 		</section>
 	</main>
 
-	<footer class="bg-secondary pb-10">
-		<div class="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-6">
-			<div class="h-10 w-px bg-gradient-to-b from-primary to-transparent"></div>
-			<Image src={logo} alt="GA Food Wholesaler" class="h-9 w-auto" />
-			<p class="text-xs text-muted-foreground">Private Label &amp; Brand Development</p>
-			<p class="text-xs text-muted-foreground">© {new Date().getFullYear()} GA Food. Todos os direitos reservados.</p>
+	<footer class="border-t border-border bg-secondary">
+		<div class="mx-auto max-w-6xl px-6 pt-20 pb-10">
+			<div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+				<div>
+					<Image src={logo} alt="GA Food Wholesaler" class="h-12 w-auto" />
+					<p class="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+						Private Label &amp; Brand Development. Da ideia ao produto na prateleira, com uma
+						estrutura só.
+					</p>
+				</div>
+
+				<nav aria-label="Seções do site">
+					<p class="text-xs font-medium tracking-[0.14em] text-foreground uppercase">Navegar</p>
+					<ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+						<li><a href="#metodo" class="transition-colors hover:text-primary">Private Label 360°</a></li>
+						<li><a href="#cafe" class="transition-colors hover:text-primary">Café Private Label</a></li>
+						<li><a href="#segmentos" class="transition-colors hover:text-primary">Para quem é</a></li>
+						<li><a href="#contato" class="transition-colors hover:text-primary">Falar com um consultor</a></li>
+					</ul>
+				</nav>
+
+				<div>
+					<p class="text-xs font-medium tracking-[0.14em] text-foreground uppercase">Contato</p>
+					<ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+						<li>
+							<a href="mailto:tranding@gafood.com.br" class="transition-colors hover:text-primary">
+								tranding@gafood.com.br
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://wa.me/5531967777753"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="tabular-nums transition-colors hover:text-primary"
+							>
+								31 96777-7753
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://instagram.com/gafoodb2b"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="transition-colors hover:text-primary"
+							>
+								@gafoodb2b
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="mt-16 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+				<p class="text-xs text-muted-foreground">
+					© {new Date().getFullYear()} GA Food Wholesaler. Todos os direitos reservados.
+				</p>
+				<p class="text-xs text-muted-foreground">gafood.com.br</p>
+			</div>
 		</div>
 	</footer>
 </Layout>
