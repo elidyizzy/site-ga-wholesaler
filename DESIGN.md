@@ -45,8 +45,30 @@ Nota: `#8A6D50` é um ponto de partida fiel ao tom visto no material do cliente,
 ## Tipografia
 
 - Sans: **Geist Variable** (já instalada via `@fontsource-variable/geist`) — limpa, neutra, boa legibilidade em corpo e títulos institucionais.
-- Escala: manter hierarquia clara, títulos grandes e diretos (ver exemplos do PDF: "Você tem a ideia." em duas linhas, peso alto).
 - Base 16px, line-height 1.5+ no corpo (regra UX crítica, ver `ui-ux-pro-max`).
+
+### Escala tipográfica (registrada em 2026-09-12)
+
+Régua de acabamento adotada: **Linear (linear.app)** — só o nível de precisão (tracking negativo disciplinado em display, hierarquia por peso/tamanho, um ritmo de espaçamento só), nunca a paleta ou o modo escuro (ver `PRODUCT.md`, Brand Commitments). Antes desta escala, cada seção escolhia `text-3xl`/`text-5xl`/tracking no olho — o resultado inconsistente vinha disso, não só de CSS solto.
+
+| Papel | Tamanho | Peso | Line-height | Tracking | Uso |
+|---|---|---|---|---|---|
+| `display-xl` | `clamp(2.75rem,7vw,6rem)` | 600 (semibold) | 0.95 | -0.03em | H1 do hero — único uso |
+| `display-lg` | `text-4xl sm:text-5xl` (36→48px) | 600 | 1.1 | -0.02em | Headline de seção (Método, Contato) |
+| `display-md` | `text-3xl sm:text-4xl` (30→36px) | 600 | 1.15 | -0.015em | Headline de bloco (posicionamento, café) |
+| `headline` | `text-lg` a `text-xl` (18–20px) | 500 (medium) | 1.3 | -0.01em | Título de card/etapa (ex. `RouteMethod` stage title) |
+| `body-lg` | `text-lg` (18px) | 300–400 | 1.5 | 0 | Subtítulo do hero, parágrafo de abertura |
+| `body` | `text-base` (16px) | 400 | 1.5+ | 0 | Corpo padrão |
+| `body-sm` | `text-sm` (14px) | 400–500 | 1.5 | 0 | Descrição de etapa/segmento, rótulo de botão |
+| `caption` | `text-xs` (12px) | 500 | 1.4 | 0.05em (positivo, só em uppercase labels) | Rótulos tipo "Nossos canais de relacionamento" |
+
+Regra: todo título `display-*` leva tracking negativo — nenhum headline de seção fica com tracking padrão do navegador. Nunca usar `eyebrow`/kicker acima de headline (regra dura do craft floor: o próprio título carrega o peso, um rótulo em cima é enfeite, não hierarquia).
+
+### Espaçamento
+
+- Padding vertical de seção: **`py-28` (112px) em toda `<section>` de página, sem exceção** — um ritmo só, do hero ao contato. Nenhuma seção usa `py-20`, `py-24` ou `py-32` "porque parece melhor" ali.
+- Dentro de uma seção: mais espaço acima de um título do que abaixo dele (headline "puxa" o parágrafo pra perto, não o contrário).
+- Escala de espaçamento interno segue os tokens padrão do Tailwind (`gap-4`/`gap-6`/`gap-8`/`gap-12`...) — já é uma escala coerente de base 4px, o problema nunca foi falta de tokens, foi a seção fora do ritmo de `py-28`.
 
 ## Fotografia / Imagens
 
