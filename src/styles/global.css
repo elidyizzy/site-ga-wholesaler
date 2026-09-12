@@ -155,6 +155,78 @@
     }
 }
 
+@layer components {
+  /* Header no registro "nav sobre atmosfera" (Stripe): nasce transparente sobre
+     a fotografia do hero, com a variante monocromática branca da logo que o
+     DESIGN.md reserva pra fundo escuro, e assenta em superfície sólida no
+     scroll, quando a logo colorida assume. */
+  #site-header.is-solid {
+    background-color: rgba(255, 255, 255, 0.88);
+    border-bottom-color: var(--border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    }
+  .header-logo {
+    transition: opacity 500ms ease-out;
+    }
+  .header-logo--solid {
+    opacity: 0;
+    }
+  #site-header.is-solid .header-logo--light {
+    opacity: 0;
+    }
+  #site-header.is-solid .header-logo--solid {
+    opacity: 1;
+    }
+  .header-tagline {
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.72);
+    transition: color 500ms ease-out, border-color 500ms ease-out;
+    }
+  #site-header.is-solid .header-tagline {
+    border-left-color: var(--border);
+    color: var(--muted-foreground);
+    }
+  .header-nav a {
+    color: rgba(255, 255, 255, 0.78);
+    transition: color 300ms ease-out;
+    }
+  .header-nav a:hover {
+    color: #ffffff;
+    }
+  #site-header.is-solid .header-nav a {
+    color: var(--muted-foreground);
+    }
+  #site-header.is-solid .header-nav a:hover {
+    color: var(--foreground);
+    }
+
+  /* Um momento de movimento autoral, não efeito espalhado: cada bloco sobe e
+     revela uma vez, em ease-out exponencial, a partir de um default visível
+     pra quem tem JS desligado ou pediu menos movimento. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    }
+}
+
 @layer utilities {
   /* Camada atmosférica: a técnica de "mesh" do Stripe, mas inteiramente derivada
      da paleta travada (taupe + creme). Nenhuma cor saturada, nenhum gradiente
