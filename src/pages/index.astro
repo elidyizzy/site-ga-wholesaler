@@ -23,13 +23,55 @@ import segmentoEmpresasEscritorios from "@/assets/images/segmento-empresas-escri
 import segmentoCriadoresEmpreendedores from "@/assets/images/segmento-criadores-empreendedores.jpg"
 
 const stageSources = [
-	{ numero: "01", titulo: "Diagnóstico & Estratégia", icone: "compass", imagem: diagnosticoEstrategia },
-	{ numero: "02", titulo: "Desenvolvimento de Produto", icone: "flask-conical", imagem: desenvolvimentoProduto },
-	{ numero: "03", titulo: "Branding & Design", icone: "palette", imagem: brandingDesign },
-	{ numero: "04", titulo: "Embalagem", icone: "package-check", imagem: embalagem },
-	{ numero: "05", titulo: "Registros & Regulatório", icone: "shield-check", imagem: registrosRegulatorio },
-	{ numero: "06", titulo: "Produção & Logística", icone: "factory", imagem: producaoLogistica },
-	{ numero: "07", titulo: "Lançamento & Suporte", icone: "rocket", imagem: lancamentoSuporte },
+	{
+		numero: "01",
+		titulo: "Diagnóstico & Estratégia",
+		descricao: "Entendemos ideia, público, canal e objetivo pra definir o caminho certo do projeto.",
+		icone: "compass",
+		imagem: diagnosticoEstrategia,
+	},
+	{
+		numero: "02",
+		titulo: "Desenvolvimento de Produto",
+		descricao: "Curadoria de matéria-prima, blends e especificações até chegar num produto viável.",
+		icone: "flask-conical",
+		imagem: desenvolvimentoProduto,
+	},
+	{
+		numero: "03",
+		titulo: "Branding & Design",
+		descricao: "Naming, identidade e conceito que criam a diferenciação da marca.",
+		icone: "palette",
+		imagem: brandingDesign,
+	},
+	{
+		numero: "04",
+		titulo: "Embalagem",
+		descricao: "Formato, material e rotulagem que transformam produto em apresentação de mercado.",
+		icone: "package-check",
+		imagem: embalagem,
+	},
+	{
+		numero: "05",
+		titulo: "Registros & Regulatório",
+		descricao: "Propriedade intelectual, INPI e exigências regulatórias resolvidas antes de virarem risco.",
+		icone: "shield-check",
+		imagem: registrosRegulatorio,
+	},
+	{
+		numero: "06",
+		titulo: "Produção & Logística",
+		descricao: "Produção, controle de qualidade e logística com o padrão e a escala que o projeto pede.",
+		icone: "factory",
+		imagem: producaoLogistica,
+	},
+	{
+		numero: "07",
+		titulo: "Lançamento & Suporte",
+		descricao: "Materiais e suporte pra transformar o produto lançado em negócio de verdade.",
+		icone: "rocket",
+		imagem: lancamentoSuporte,
+	},
 ] as const
 
 const stages: Stage[] = await Promise.all(
@@ -38,6 +80,7 @@ const stages: Stage[] = await Promise.all(
 		return {
 			numero: s.numero,
 			titulo: s.titulo,
+			descricao: s.descricao,
 			icone: s.icone,
 			imagemSrc: optimized.src,
 			imagemAlt: s.titulo,
@@ -46,12 +89,28 @@ const stages: Stage[] = await Promise.all(
 )
 
 const segmentos = [
-	{ titulo: "Cafeterias e restaurantes", imagem: segmentoCafeterias },
-	{ titulo: "Empórios e mercados especializados", imagem: segmentoEmporios },
-	{ titulo: "Distribuidores e atacadistas", imagem: segmentoDistribuidores },
-	{ titulo: "Redes e supermercados", imagem: segmentoRedesSupermercados },
-	{ titulo: "Empresas e escritórios", imagem: segmentoEmpresasEscritorios },
-	{ titulo: "Criadores e empreendedores", imagem: segmentoCriadoresEmpreendedores },
+	{ titulo: "Cafeterias e restaurantes", descricao: "Produtos próprios e experiência.", imagem: segmentoCafeterias },
+	{
+		titulo: "Empórios e mercados especializados",
+		descricao: "Linha exclusiva e diferenciação.",
+		imagem: segmentoEmporios,
+	},
+	{
+		titulo: "Distribuidores e atacadistas",
+		descricao: "Portfólio próprio e novas margens.",
+		imagem: segmentoDistribuidores,
+	},
+	{
+		titulo: "Redes e supermercados",
+		descricao: "Escala e padronização.",
+		imagem: segmentoRedesSupermercados,
+	},
+	{ titulo: "Empresas e escritórios", descricao: "Produtos institucionais.", imagem: segmentoEmpresasEscritorios },
+	{
+		titulo: "Criadores e empreendedores",
+		descricao: "Estrutura para tirar a ideia do papel.",
+		imagem: segmentoCriadoresEmpreendedores,
+	},
 ]
 ---
 
@@ -76,7 +135,7 @@ const segmentos = [
 				href="#contato"
 				class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95"
 			>
-				Falar com um especialista
+				Fale com um Consultor GA
 			</a>
 		</div>
 	</header>
@@ -115,7 +174,7 @@ const segmentos = [
 							href="#contato"
 							class="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-primary-foreground/25 px-7 text-sm font-medium text-primary-foreground transition-colors hover:border-primary-foreground/60 hover:bg-primary-foreground/5"
 						>
-							Falar com um especialista
+							Fale com um Consultor GA
 						</a>
 					</div>
 				</div>
@@ -133,11 +192,11 @@ const segmentos = [
 							negócio.
 						</h2>
 						<p class="mt-6 max-w-lg text-muted-foreground">
-							Com a GA Food Wholesaler, você personaliza produtos de alta qualidade, adaptados às
-							suas especificações e alinhados à identidade da sua marca — mas o que muda de
-							verdade vai além da embalagem. É sair da posição de quem revende a marca de outra
-							empresa e passar a construir a sua: com a margem que hoje fica com terceiros, o
-							preço que você define e um produto que só você pode vender de novo, do jeito que
+							Começamos pela necessidade, não pelo produto. Entendemos o objetivo do seu projeto,
+							selecionamos o caminho técnico e comercial certo e coordenamos a execução — o que
+							muda de verdade vai além da embalagem. É sair da posição de quem revende a marca de
+							outra empresa e passar a construir a sua: com a margem que hoje fica com terceiros,
+							o preço que você define e um produto que só você pode vender de novo, do jeito que
 							quiser. A GA Food entrega a estrutura pra isso acontecer — do diagnóstico ao
 							produto na prateleira — sem que você precise montar essa engrenagem sozinho.
 						</p>
@@ -235,9 +294,10 @@ const segmentos = [
 									sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 								/>
 								<div class="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent" />
-								<p class="absolute right-5 bottom-5 left-5 text-lg font-medium text-primary-foreground">
-									{segmento.titulo}
-								</p>
+								<div class="absolute right-5 bottom-5 left-5">
+									<p class="text-lg font-medium text-primary-foreground">{segmento.titulo}</p>
+									<p class="mt-1 text-sm text-primary-foreground/70">{segmento.descricao}</p>
+								</div>
 							</a>
 						))
 					}

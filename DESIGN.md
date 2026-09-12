@@ -87,7 +87,7 @@ Consultivo, seguro, direto, sem jargão, humano mas não informal, orientado a r
 - Diferencial: "Mais do que produção: uma estrutura integrada para desenvolver sua marca própria."
 - Método: "Private Label 360°."
 - Produto+marca: "Sua marca. Seu produto. Nossa estrutura."
-- CTA principal: "Desenvolver minha marca própria" / CTA secundário: "Falar com um especialista"
+- CTA principal: "Desenvolver minha marca própria" / CTA secundário: "Fale com um Consultor GA" (atualizado em 2026-09-12 — substitui "Falar com um especialista")
 
 ## Stack técnica (decisão registrada em 2026-08-30)
 

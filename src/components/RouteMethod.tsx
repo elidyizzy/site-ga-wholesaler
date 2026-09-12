@@ -15,6 +15,7 @@ const ICONS: Record<string, LucideIcon> = {
 export interface Stage {
 	numero: string
 	titulo: string
+	descricao: string
 	icone: keyof typeof ICONS
 	imagemSrc: string
 	imagemAlt: string
@@ -89,9 +90,12 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 										className="h-full w-full object-cover"
 									/>
 								</div>
-								<div className={`flex items-center gap-2.5 ${fromLeft ? "md:flex-row-reverse" : ""}`}>
-									<Icon className="size-4 shrink-0 text-primary" strokeWidth={1.5} />
-									<h3 className="text-lg font-medium text-foreground">{stage.titulo}</h3>
+								<div className="flex flex-col gap-1.5">
+									<div className={`flex items-center gap-2.5 ${fromLeft ? "md:flex-row-reverse" : ""}`}>
+										<Icon className="size-4 shrink-0 text-primary" strokeWidth={1.5} />
+										<h3 className="text-lg font-medium text-foreground">{stage.titulo}</h3>
+									</div>
+									<p className="text-sm text-muted-foreground">{stage.descricao}</p>
 								</div>
 							</motion.div>
 						</div>
