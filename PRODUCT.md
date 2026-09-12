@@ -25,6 +25,7 @@ Client engagement starts with a diagnostic conversation (WhatsApp/e-mail/qualify
 ## Capabilities and Constraints
 
 - Seven-stage methodology is a confirmed, real service structure, not page filler: Diagnóstico & Estratégia, Desenvolvimento de Produto, Branding & Design, Embalagem, Registros & Regulatório, Produção & Logística, Lançamento & Suporte.
+- Stages are modular — confirmed with the client 2026-09-12, resolving a contradiction in the briefing deck (page 2 "serviços independentes ou projeto completo" vs. page 3 "um projeto, um parceiro responsável pela jornada"). A prospect can hire a single stage (e.g. only Embalagem) or the full Private Label 360° journey; the site must not imply the 7 stages are an all-or-nothing bundle.
 - Café Private Label is a distinct, highlighted vertical among the services, not the company's core identity.
 - No e-commerce/checkout — this is a lead-generation/institutional site (Persuade mode) that qualifies leads through a future contact/diagnostic form, WhatsApp, and e-mail.
 - Site is being built page by page; only the Home exists today. Planned pages (Private Label 360° detail, Serviços, Café Private Label, Para Quem É, Como Funciona, Por Que GA Food, Cases/Projetos, Contato/Diagnóstico) do not exist yet — the Home should not link to routes that don't exist, and should use in-page anchors until those pages ship.

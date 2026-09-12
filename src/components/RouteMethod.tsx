@@ -1,6 +1,16 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Compass, FlaskConical, Palette, PackageCheck, ShieldCheck, Factory, Rocket, type LucideIcon } from "lucide-react"
+import {
+	Compass,
+	FlaskConical,
+	Palette,
+	PackageCheck,
+	ShieldCheck,
+	Factory,
+	Rocket,
+	ArrowRight,
+	type LucideIcon,
+} from "lucide-react"
 
 const ICONS: Record<string, LucideIcon> = {
 	compass: Compass,
@@ -96,6 +106,13 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 										<h3 className="text-lg font-medium text-foreground">{stage.titulo}</h3>
 									</div>
 									<p className="text-sm text-muted-foreground">{stage.descricao}</p>
+									<a
+										href="#contato"
+										className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+									>
+										Contratar só esta etapa
+										<ArrowRight className="size-3.5" />
+									</a>
 								</div>
 							</motion.div>
 						</div>
