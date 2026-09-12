@@ -3,7 +3,7 @@ import { Image, getImage } from "astro:assets"
 import Layout from "@/layouts/Layout.astro"
 import RouteMethod, { type Stage } from "@/components/RouteMethod"
 import ContactChat from "@/components/ContactChat"
-import { ArrowRight, Mail, MessageCircle } from "lucide-react"
+import { ArrowRight, Mail, MessageCircle, TrendingUp, Network, ShieldCheck } from "lucide-react"
 
 import logo from "@/assets/logo.png"
 import hero from "@/assets/images/hero.jpg"
@@ -26,7 +26,7 @@ const stageSources = [
 	{
 		numero: "01",
 		titulo: "Diagnóstico & Estratégia",
-		descricao: "Entendemos ideia, público, canal e objetivo pra definir o caminho certo do projeto.",
+		descricao: "Ideia, público, canal e objetivo mapeados pra definir o caminho certo do projeto.",
 		icone: "compass",
 		imagem: diagnosticoEstrategia,
 	},
@@ -181,6 +181,25 @@ const segmentos = [
 			</div>
 
 			<div class="absolute bottom-0 left-6 z-20 h-24 w-px bg-gradient-to-b from-transparent to-primary md:left-1/2"></div>
+		</section>
+
+		<section class="border-b border-border bg-background py-10">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-border">
+					<div class="flex items-center gap-3 sm:justify-center sm:pr-4">
+						<TrendingUp className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
+						<p class="text-base font-medium text-foreground">Mais margem sua</p>
+					</div>
+					<div class="flex items-center gap-3 sm:justify-center sm:px-4">
+						<Network className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
+						<p class="text-base font-medium text-foreground">Menos fornecedor pra coordenar</p>
+					</div>
+					<div class="flex items-center gap-3 sm:justify-center sm:pl-4">
+						<ShieldCheck className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
+						<p class="text-base font-medium text-foreground">Menos risco regulatório</p>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<section class="bg-background py-28">
