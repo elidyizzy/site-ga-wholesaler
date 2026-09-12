@@ -1,0 +1,46 @@
+---
+import "@/styles/global.css"
+
+interface Props {
+	title: string
+	description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<!--
+			THESIS: "Da ideia à marca" vira uma rota contínua e literal atravessando
+			a página — não uma lista de cards — recusando o scaffold-padrão de
+			feature-cards B2B.
+			OWN-WORLD: Branco/creme domina a página (paleta travada em
+			DESIGN.md); o hero fotográfico Agro Premium é o único momento
+			escuro, pela própria imagem, não pela paleta; #8A6D50 é o único
+			acento quente, aplicado em CTAs e na rota do método; Geist Variable
+			em escala grande e comprometida.
+			STORY: O visitante entende que a GA Food conduz sua marca por um
+			caminho real e definido — do diagnóstico ao lançamento — e age pedindo
+			o diagnóstico.
+			FIRST VIEWPORT: Hero em tela cheia, pouches + founder em primeiro
+			plano, headline massiva sem eyebrow, a linha da rota nasce no rodapé
+			do hero.
+			FORM: Rota — estrutura nº1 da lista própria (índice 1, dealt), seed
+			key 5c268776.
+			FINISH: unreviewed and undocumented is unfinished; this build ends
+			with the finish review, the verdict, DESIGN.md, and every shipping
+			raster carrying its provenance.
+		-->
+		<slot />
+	</body>
+</html>

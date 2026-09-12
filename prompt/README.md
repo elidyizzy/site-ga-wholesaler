@@ -25,9 +25,12 @@ arquivo — não precisa combinar nada manualmente.
 
 ## Regras gerais
 
+- Estética **Agro Premium** (v3, 2026-08-31 — ver histórico completo em `DESIGN.md` seção "Fotografia / Imagens"): mistura de **fotografia de produto-herói** (pouches em fundo escuro, luz dramática quente, estilo campanha de bebida premium) com **fotografia de negócio genuíno** (pessoas smart-casual, luz natural, interação real) — sempre dentro dos ambientes da própria GA Food, nunca fazenda literal, nunca laboratório clínico, nunca lifestyle de coworking genérico, nunca boho-artesanal.
 - Sempre pedir **variações sem texto/rótulo legível** nas embalagens (o rótulo real da GA Food entra depois).
-- Evitar: café em toda imagem (a empresa não é só torrefação), pessoas "vendedoras" olhando pra câmera, qualquer cor saturada fora da paleta da marca.
+- Evitar: café em toda imagem (a empresa não é só torrefação), pessoas "vendedoras" olhando pra câmera, qualquer cor saturada fora da paleta da marca, tela de laptop/celular tentando simular texto ou UI legível (gera artefatos visuais ruins nos geradores de imagem — se aparecer tela, só formas/blocos abstratos).
 - Manter a mesma "sessão de fotos" — não misturar estilos diferentes entre as imagens do site.
+
+O hero é imagem estática (`hero.jpg`) — sem animação/vídeo.
 
 ## Depois de gerar
 

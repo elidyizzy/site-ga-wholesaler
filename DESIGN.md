@@ -12,7 +12,16 @@ Modo do site (ver `impeccable/reference/new-work.md`): **Persuade** — B2B inst
 
 A logo (`logomarca/base_logo_transparent_background.png`) é colorida e lúdica (ciano/magenta/azul/laranja lettering) — **decisão do cliente: mantida como está, sem redesenho.**
 
-Regra de uso: a logo é o único elemento com essa saturação de cor no site inteiro. Todo o resto do sistema visual é neutro/quente e contido (ver Paleta) para que a logo tenha espaço pra "estourar" sem competir com blocos coloridos ao redor — nunca reutilizar as cores da logo em botões, ícones, tags ou fundos. Fundo branco sempre atrás da logo, nunca deformar, nunca aplicar em excesso na página (briefing, seção 10).
+Regra de uso: a logo é o único elemento com essa saturação de cor no site inteiro. Todo o resto do sistema visual é neutro/quente e contido (ver Paleta) para que a logo tenha espaço pra "estourar" sem competir com blocos coloridos ao redor — nunca reutilizar as cores da logo em botões, ícones, tags ou fundos. Nunca deformar, nunca aplicar em excesso na página (briefing, seção 10).
+
+**Atualizado em 2026-09-01** — regra "fundo branco sempre atrás da logo" foi escrita quando header/footer eram escuros e exigiam um cartão branco isolando a logo colorida. Com a paleta clara (ver Paleta), header (`bg-background/90`) e footer (`bg-secondary`, creme) já são claros o bastante pra logo ir direto neles, sem cartão — cliente reportou que o cartão branco pequeno deixava a logo "apagada e minúscula". Cartão branco isolado continua valendo só se a logo for aplicada sobre fundo escuro ou fotografia (nesse caso usar as variantes monocromáticas abaixo, não a colorida sobre um cartão).
+
+Variantes adicionadas pelo cliente em `logomarca/` (2026-09-01), ainda sem aplicação definida no site — usar quando a colorida não servir (ex.: favicon, ou lockup sobre fundo escuro/foto sem cartão):
+- `black_logo_transparent_background.png` — wordmark preto, fundo transparente (fundos claros).
+- `white_logo_transparent_background.png` — wordmark branco, fundo transparente (fundos escuros/fotografia).
+- `black_logo_white_background.png` / `white_logo_black_background.png` — versões com fundo sólido embutido (badges/selos).
+
+Nenhuma delas tem um símbolo/monograma isolado (só o wordmark completo em duas linhas) — não servem como favicon sem recorte, e recortar um monograma novo é decisão de marca, não foi pedido ainda.
 
 ## Paleta
 
@@ -41,13 +50,20 @@ Nota: `#8A6D50` é um ponto de partida fiel ao tom visto no material do cliente,
 
 ## Fotografia / Imagens
 
-Direção obrigatória (briefing, seções 10 e 15):
-- Fotografia **humanizada**: pessoas em reunião, cocriação, seleção de matéria-prima, embalagem, produção — processo antes de produto.
-- Nunca só café em todo lugar — a empresa não é só torrefação.
-- Estética clean, premium, luz natural, paleta neutra/quente coerente com a paleta acima.
-- Sem estoque genérico óbvio, sem selo/badge espalhado pela imagem.
+Direção obrigatória (briefing, seções 10 e 15). **Histórico de correções de estética** — três rodadas já erraram o alvo, registrado aqui pra não repetir:
 
-Como não há banco de fotos real da GA Food, as imagens serão geradas por IA externa seguindo os prompts em `prompt/` (um arquivo `.txt` por imagem, ver `prompt/README.md`) para manter a mesma "sessão de fotos" visual em todas as páginas.
+- **V1 (rejeitada, 2026-08-30/31):** prompt original gerou lifestyle/coworking genérico — potes de cerâmica boho, flores secas, mesa de madeira rústica, sorriso pra câmera. Cliente: "amadoras".
+- **V2 (rejeitada, 2026-08-31):** correção pra "industrial" foi longe demais pro lado clínico — jaleco, touca, óculos de proteção, bandeja de inox leram como auditoria de segurança alimentar, não luxo. Cliente: "isso parece premium de luxo?".
+- **V3 (atual, 2026-08-31)** — direção validada com referências reais trazidas pelo cliente (campanha Vibe Coffee, pouch preto/dourado em fundo escuro, aperto de mão e equipe em campo, mesa de design de rótulo):
+  - **Registro de produto-herói**: pouches private label (preto fosco, kraft, metálico) fotografados como protagonista, luz dramática quente lateral/dourada, fundo escuro, bokeh — registro de campanha de bebida/perfume premium, não still de catálogo.
+  - **Registro de negócio genuíno**: pessoas em traje smart-casual/business-casual — nunca jaleco, touca ou óculos de proteção — em interação real (reunião, degustação, aperto de mão, inspeção), luz natural quente ou dramática lateral, nunca lifestyle de coworking genérico.
+  - **Cenário sempre dentro da GA Food** (produção própria, sala de degustação, estúdio de design, showroom, escritório) — **nunca fazenda/plantação literal** (a empresa não é produtora rural) e **nunca laboratório clínico/hospitalar**.
+  - Tela de laptop, quando aparece, mostra só formas/blocos abstratos — nunca tenta simular texto ou UI legível (fonte recorrente de artefato visual ruim nos geradores de imagem).
+  - Segue valendo: nunca só café em todo lugar (a empresa não é só torrefação), sem estoque genérico óbvio, sem selo/badge espalhado pela imagem, sem cor saturada fora da paleta.
+
+- **V3 rejeitada em produção (2026-09-01):** mesmo validada em referência, ao ver o site montado o cliente achou as fotos amadoras/reconhecivelmente geradas por IA — "não dá vontade de ter uma marca de café ou de qualquer outro private label". **Sem direção V4 definida ainda** — cliente pediu pra só registrar o problema por enquanto, sem mexer nas imagens nesta rodada. Opções levantadas e não decididas: (a) nova leva de IA com direção mais específica sobre o que falhou, (b) banco de imagens premium licenciado, (c) ensaio fotográfico real da GA Food. Não gerar nem trocar imagens sem essa decisão.
+
+Como não há banco de fotos real da GA Food, as imagens atuais (V3) foram geradas por IA externa seguindo os prompts em `prompt/` (um arquivo `.txt` por imagem, ver `prompt/README.md`) para manter a mesma "sessão de fotos" visual em todas as páginas — mas essa abordagem está em aberto, ver V3 acima.
 
 ## Ícones
 
