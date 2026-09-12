@@ -3,7 +3,7 @@ import { Image, getImage } from "astro:assets"
 import Layout from "@/layouts/Layout.astro"
 import RouteMethod, { type Stage } from "@/components/RouteMethod"
 import ContactChat from "@/components/ContactChat"
-import { ArrowRight, Mail, MessageCircle, TrendingUp, Network, ShieldCheck } from "lucide-react"
+import { ArrowRight, Mail, MessageCircle } from "lucide-react"
 
 import logo from "@/assets/logo.png"
 import hero from "@/assets/images/hero.jpg"
@@ -183,20 +183,29 @@ const segmentos = [
 			<div class="absolute bottom-0 left-6 z-20 h-24 w-px bg-gradient-to-b from-transparent to-primary md:left-1/2"></div>
 		</section>
 
-		<section class="border-b border-border bg-background py-10">
+		<section class="bg-background py-20 md:py-24">
 			<div class="mx-auto max-w-6xl px-6">
-				<div class="grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-border">
-					<div class="flex items-center gap-3 sm:justify-center sm:pr-4">
-						<TrendingUp className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
-						<p class="text-base font-medium text-foreground">A margem fica com você, não com terceiro</p>
+				<div class="grid gap-12 sm:grid-cols-3 sm:gap-8">
+					<div>
+						<span class="text-sm font-semibold tracking-[0.2em] text-primary tabular-nums">01</span>
+						<div class="mt-3 h-px w-8 bg-primary"></div>
+						<p class="mt-4 text-xl leading-snug font-semibold text-balance text-foreground sm:text-2xl">
+							A margem fica com você, não com terceiro.
+						</p>
 					</div>
-					<div class="flex items-center gap-3 sm:justify-center sm:px-4">
-						<Network className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
-						<p class="text-base font-medium text-foreground">Um parceiro cuida de tudo. Você foca em vender</p>
+					<div class="sm:mt-14">
+						<span class="text-sm font-semibold tracking-[0.2em] text-primary tabular-nums">02</span>
+						<div class="mt-3 h-px w-8 bg-primary"></div>
+						<p class="mt-4 text-xl leading-snug font-semibold text-balance text-foreground sm:text-2xl">
+							Um parceiro cuida de tudo. Você foca em vender.
+						</p>
 					</div>
-					<div class="flex items-center gap-3 sm:justify-center sm:pl-4">
-						<ShieldCheck className="size-5 shrink-0 text-primary" strokeWidth={1.5} />
-						<p class="text-base font-medium text-foreground">Regulatório resolvido antes de virar prejuízo</p>
+					<div class="sm:mt-6">
+						<span class="text-sm font-semibold tracking-[0.2em] text-primary tabular-nums">03</span>
+						<div class="mt-3 h-px w-8 bg-primary"></div>
+						<p class="mt-4 text-xl leading-snug font-semibold text-balance text-foreground sm:text-2xl">
+							Regulatório resolvido antes de virar prejuízo.
+						</p>
 					</div>
 				</div>
 			</div>
