@@ -178,6 +178,28 @@
     color: var(--foreground);
     }
 
+  /* Hero em áreas nomeadas: o pacote é um componente só, servindo os dois
+     layouts. No telefone ele entra entre o subtítulo e as ações — antes ficava
+     de fora (hidden lg:flex) e o primeiro viewport virava texto no branco. */
+  .hero-grid {
+    display: grid;
+    grid-template-areas: "titulo" "sub" "pacote" "acoes";
+    gap: 1.75rem;
+    }
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.68fr);
+      grid-template-areas: "titulo pacote" "sub pacote" "acoes pacote";
+      align-items: center;
+      column-gap: 3.5rem;
+      row-gap: 1.75rem;
+      }
+    }
+  .hero-titulo { grid-area: titulo; }
+  .hero-sub { grid-area: sub; }
+  .hero-acoes { grid-area: acoes; }
+  .hero-pacote { grid-area: pacote; }
+
   /* Um momento de movimento autoral, não efeito espalhado: cada bloco sobe e
      revela uma vez, em ease-out exponencial, a partir de um default visível
      pra quem tem JS desligado ou pediu menos movimento. */

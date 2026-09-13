@@ -28,7 +28,7 @@ const EASE = [0.16, 1, 0.3, 1] as const
 const ETAPAS = [
 	{ titulo: "SEU PROJETO", origem: "A DEFINIR", torra: "EM TESTE", peso: "A DEFINIR", fase: "DIAGNÓSTICO" },
 	{ titulo: "SUA MARCA", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "BRANDING" },
-	{ titulo: "SEU MERCADO", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "NA PRATELEIRA" },
+	{ titulo: "SEU MERCADO", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "PRATELEIRA" },
 ]
 
 /** Posição da etiqueta real dentro da imagem, em % — medida sobre o recorte. */
@@ -79,14 +79,14 @@ export default function HeroPacote({ src, width, height }: Props) {
 
 	return (
 		<motion.div
-			className="relative h-full w-full"
+			className="relative w-full"
 			style={{ perspective: 1400, rotateX: reduced ? 0 : rotX, rotateY: reduced ? 0 : rotY }}
 		>
 			{/* prancha de projeto: entra antes do produto e recua quando ele chega */}
 			<motion.svg
 				viewBox="0 0 100 140"
 				preserveAspectRatio="none"
-				className="absolute inset-0 h-full w-full"
+				className="absolute inset-0 -z-10 h-full w-full"
 				initial="hidden"
 				animate="shown"
 				aria-hidden="true"
@@ -130,13 +130,13 @@ export default function HeroPacote({ src, width, height }: Props) {
 
 			{/* o produto: sobe e entra em foco */}
 			<motion.div
-				className="relative h-full w-full"
+				className="relative w-full"
 				initial={reduced ? false : { opacity: 0, y: 26, filter: "blur(10px)" }}
 				animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 				transition={{ duration: 1.3, delay: 1.1, ease: EASE }}
 			>
 				<motion.div
-					className="relative mx-auto aspect-[1468/2310] h-full max-h-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-lift-3)]"
+					className="relative mx-auto aspect-[1468/2310] w-full max-w-[26rem] overflow-hidden rounded-[1.5rem] shadow-[var(--shadow-lift-3)] sm:rounded-[2rem]"
 					animate={reduced ? undefined : { y: [0, -8, 0] }}
 					transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 4 }}
 				>
@@ -167,27 +167,27 @@ export default function HeroPacote({ src, width, height }: Props) {
 								className="flex h-full flex-col"
 							>
 								<p className="text-[clamp(6px,0.62vw,10px)] tracking-[0.22em] text-primary">PRIVATE LABEL</p>
-								<p className="mt-[2%] text-[clamp(15px,1.75vw,30px)] leading-none font-semibold tracking-[-0.02em] text-foreground">
+								<p className="mt-[2%] text-[clamp(12px,1.32vw,21px)] leading-[1.05] font-semibold tracking-[-0.02em] whitespace-nowrap text-foreground">
 									{e.titulo}
 								</p>
 
 								<div className="mt-auto border-t border-primary/25 pt-[5%]">
 									<div className="grid grid-cols-2 gap-x-[6%] gap-y-[3%]">
 										<div>
-											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">ORIGEM</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.origem}</p>
+											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">ORIGEM</p>
+											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.origem}</p>
 										</div>
 										<div>
-											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">TORRA</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.torra}</p>
+											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">TORRA</p>
+											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.torra}</p>
 										</div>
 										<div>
-											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">PESO</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.peso}</p>
+											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">PESO</p>
+											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.peso}</p>
 										</div>
 										<div>
-											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">FASE</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-primary">{e.fase}</p>
+											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">FASE</p>
+											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-primary">{e.fase}</p>
 										</div>
 									</div>
 								</div>
