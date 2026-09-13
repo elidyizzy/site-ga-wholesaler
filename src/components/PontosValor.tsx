@@ -20,25 +20,25 @@ const VIEWPORT = { once: true, margin: "-15% 0px -15% 0px" } as const
 
 const PONTOS = [
 	{
-		titulo: "Margem",
-		texto: "Fica com você, não com quem revende a marca de outra empresa.",
+		titulo: "A margem vira sua",
+		texto: "Você para de revender a marca de outra empresa — e a margem que ia pra ela passa a ficar no seu caixa.",
 		icone: IconeMargem,
 	},
 	{
-		titulo: "Coordenação",
-		texto: "Um parceiro cuida das sete etapas. Você foca em vender.",
+		titulo: "A operação é nossa",
+		texto: "Para chegar lá você não monta estrutura nenhuma: a GA conduz as sete etapas enquanto você cuida de vender.",
 		icone: IconeCoordenacao,
 	},
 	{
-		titulo: "Risco",
-		texto: "Registro e regulatório resolvidos antes de virarem prejuízo.",
+		titulo: "O risco sai da conta",
+		texto: "E com registro e regulatório sob a nossa assessoria, sua marca entra no mercado com a operação blindada de prejuízo.",
 		icone: IconeRisco,
 	},
 ]
 
 export default function PontosValor() {
 	return (
-		<dl className="flex flex-col gap-12">
+		<dl className="flex flex-col">
 			{PONTOS.map(({ titulo, texto, icone: Icone }, i) => (
 				<motion.div
 					key={titulo}
@@ -46,10 +46,14 @@ export default function PontosValor() {
 					initial={{ opacity: 0, y: 14 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={VIEWPORT}
-					transition={{ duration: 0.7, delay: i * 0.12, ease: EASE }}
+					transition={{ duration: 0.7, delay: i * 0.45, ease: EASE }}
 				>
-					<Icone delay={i * 0.12} />
-					<div className="pt-1.5">
+					{/* a coluna que encadeia: ícone, e a seta que leva ao próximo */}
+					<div className="flex shrink-0 flex-col items-center">
+						<Icone delay={i * 0.45} />
+						{i < PONTOS.length - 1 && <Conector delay={i * 0.45 + 1.5} />}
+					</div>
+					<div className="pt-1.5 pb-10">
 						<dt className="text-sm font-medium tracking-[-0.01em] text-primary">{titulo}</dt>
 						<dd className="mt-1.5 text-lg leading-snug font-light text-foreground">{texto}</dd>
 					</div>
@@ -61,6 +65,41 @@ export default function PontosValor() {
 
 interface IconeProps {
 	delay: number
+}
+
+/** A consequência entre um ponto e o próximo: a seta desce e fecha o raciocínio. */
+function Conector({ delay }: { delay: number }) {
+	return (
+		<svg viewBox="0 0 12 56" className="h-14 w-3 sm:h-16" fill="none" aria-hidden="true">
+			<motion.line
+				x1="6"
+				y1="2"
+				x2="6"
+				y2="44"
+				className="stroke-primary/35"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				initial={{ pathLength: 0 }}
+				whileInView={{ pathLength: 1 }}
+				viewport={VIEWPORT}
+				transition={{ duration: 0.6, delay, ease: EASE }}
+			/>
+			<motion.path
+				d="M2.5 40 6 44.5 9.5 40"
+				className="stroke-primary"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				initial={{ pathLength: 0, opacity: 0 }}
+				whileInView={{ pathLength: 1, opacity: 1 }}
+				viewport={VIEWPORT}
+				transition={{
+					pathLength: { duration: 0.3, delay: delay + 0.45, ease: EASE },
+					opacity: { duration: 0.01, delay: delay + 0.45 },
+				}}
+			/>
+		</svg>
+	)
 }
 
 /** A fatia da margem vira pro seu lado: o anel preenche de um terço a quase tudo. */
