@@ -1,38 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion"
 
 /**
- * O pacote private label no primeiro viewport — imagem real, etiqueta ao vivo.
+ * A peça do primeiro viewport: a imagem do produto entrando em cena.
  *
- * A imagem é peça do próprio cliente (recorte de `apresentação private label.pdf`,
- * onde o pacote já aparece com a etiqueta em branco). Desenhar isso em SVG não
- * alcançava: material, textura de kraft e profundidade de campo não se resolvem
- * com gradiente linear.
- *
- * O que é nosso, e é o argumento do site:
- *
- * 1. **A etiqueta avança pela jornada** — SEU PROJETO → SUA MARCA → SEU MERCADO —
- *    ancorada em cima da etiqueta real do pacote, que na peça original tem o texto
- *    mal renderizado. A ficha técnica se preenche junto: o que entra "a definir"
- *    no diagnóstico termina resolvido na prateleira.
- * 2. **A revelação**: prancha de projeto → o pacote surge → a etiqueta assenta.
- * 3. **O pacote acompanha o cursor**, girando de leve em perspectiva.
+ * Prancha de projeto na entrada, o produto surge de fora de foco e sobe, fica
+ * respirando, e acompanha o cursor girando de leve em perspectiva. Nada é
+ * sobreposto à imagem: a arte do pacote é a da própria peça.
  */
 
 const EASE = [0.16, 1, 0.3, 1] as const
-
-/**
- * A etiqueta conta a jornada, não um rodízio de marcas: o projeto entra em
- * aberto e vai se preenchendo até o produto estar na prateleira.
- */
-const ETAPAS = [
-	{ titulo: "SEU PROJETO", origem: "A DEFINIR", torra: "EM TESTE", peso: "A DEFINIR", fase: "DIAGNÓSTICO" },
-	{ titulo: "SUA MARCA", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "BRANDING" },
-	{ titulo: "SEU MERCADO", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "PRATELEIRA" },
-]
-
-/** Posição da etiqueta real dentro da imagem, em % — medida sobre o recorte. */
-const ETIQUETA = { left: "16.2%", top: "38.4%", width: "46.4%", height: "44.8%" }
 
 interface Props {
 	src: string
@@ -42,7 +19,6 @@ interface Props {
 
 export default function HeroPacote({ src, width, height }: Props) {
 	const reduced = useReducedMotion()
-	const [etapa, setEtapa] = useState(0)
 
 	const px = useMotionValue(0)
 	const py = useMotionValue(0)
@@ -59,23 +35,8 @@ export default function HeroPacote({ src, width, height }: Props) {
 		return () => window.removeEventListener("pointermove", onMove)
 	}, [px, py, reduced])
 
-	// a jornada só começa a avançar depois que o pacote terminou de entrar
-	useEffect(() => {
-		let intervalo: ReturnType<typeof setInterval>
-		const inicio = setTimeout(() => {
-			setEtapa((e) => (e + 1) % ETAPAS.length)
-			intervalo = setInterval(() => setEtapa((e) => (e + 1) % ETAPAS.length), 3600)
-		}, 4200)
-		return () => {
-			clearTimeout(inicio)
-			clearInterval(intervalo)
-		}
-	}, [])
-
 	const t = (delay: number, duration: number) =>
 		reduced ? { duration: 0 } : { duration, delay, ease: EASE }
-
-	const e = ETAPAS[etapa]
 
 	return (
 		<motion.div
@@ -150,50 +111,6 @@ export default function HeroPacote({ src, width, height }: Props) {
 						fetchPriority="high"
 					/>
 
-					{/* a etiqueta ao vivo, ancorada sobre a etiqueta real do pacote */}
-					<motion.div
-						className="absolute"
-						style={ETIQUETA}
-						initial={reduced ? false : { opacity: 0, scale: 0.97 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.8, delay: 2.4, ease: EASE }}
-					>
-						<div className="flex h-full w-full flex-col justify-between rounded-[3px] bg-[#FBF7EE] px-[7%] py-[6%] shadow-[inset_0_0_18px_rgba(120,96,62,0.16)]">
-							<motion.div
-								key={etapa}
-								initial={reduced ? false : { opacity: 0, y: 7 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, ease: EASE }}
-								className="flex h-full flex-col"
-							>
-								<p className="text-[clamp(6px,0.62vw,10px)] tracking-[0.22em] text-primary">PRIVATE LABEL</p>
-								<p className="mt-[2%] text-[clamp(12px,1.32vw,21px)] leading-[1.05] font-semibold tracking-[-0.02em] whitespace-nowrap text-foreground">
-									{e.titulo}
-								</p>
-
-								<div className="mt-auto border-t border-primary/25 pt-[5%]">
-									<div className="grid grid-cols-2 gap-x-[6%] gap-y-[3%]">
-										<div>
-											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">ORIGEM</p>
-											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.origem}</p>
-										</div>
-										<div>
-											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">TORRA</p>
-											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.torra}</p>
-										</div>
-										<div>
-											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">PESO</p>
-											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-foreground/85">{e.peso}</p>
-										</div>
-										<div>
-											<p className="text-[clamp(4.5px,0.45vw,7px)] tracking-[0.14em] text-muted-foreground/70">FASE</p>
-											<p className="truncate text-[clamp(6px,0.63vw,10px)] whitespace-nowrap text-primary">{e.fase}</p>
-										</div>
-									</div>
-								</div>
-							</motion.div>
-						</div>
-					</motion.div>
 				</motion.div>
 			</motion.div>
 		</motion.div>
