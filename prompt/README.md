@@ -37,3 +37,15 @@ O hero é imagem estática (`hero.jpg`) — sem animação/vídeo.
 Salvar os arquivos finais em `src/assets/` no projeto, nomeados igual ao
 slug do prompt (ex: `hero.jpg`, `segmento-cafeterias.jpg`) — o Astro otimiza
 automaticamente via `astro:assets` quando importados no código.
+
+## Imagem do pacote no hero (2026-09-12)
+
+`src/assets/images/pacote-private-label.jpg` **não é gerada por nós**: é recorte
+de material comercial do próprio cliente — `apresentação private label.pdf`,
+página com a logo GA Food Wholesaler, onde o pacote aparece com a etiqueta em
+branco ("YOUR BRAND HERE"). Por isso não passa pela discussão de direção V1/V2/V3:
+não é foto de banco nossa, é peça do cliente.
+
+O texto da etiqueta original está mal renderizado (artefato de IA na peça
+original). No site ele fica coberto pela etiqueta ao vivo do `HeroPacote.tsx`,
+que é onde as marcas se alternam.
