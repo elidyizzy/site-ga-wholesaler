@@ -148,6 +148,8 @@ Regra: malha 24×24 e traço 1.5 iguais aos da lucide, pra conviverem sem destoa
 
 ## Tom de voz
 
+**Sem travessão (2026-09-13).** Decisão da cliente: travessão não é pontuação de uso corrente no português do Brasil e não entra em texto visível do site. Onde ele apareceria, usar vírgula, dois-pontos ou ponto final. Isso alterou a mensagem fixa do hero, que antes trazia um travessão antes de "com a margem". Comentário de código não conta.
+
 Consultivo, seguro, direto, sem jargão, humano mas não informal, orientado a resultado. Mensagens-chave fixas (briefing, seção 13) — reutilizar literalmente, não parafrasear:
 
 - Mãe: "Você tem a ideia. Nós cuidamos do resto."

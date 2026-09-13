@@ -20,8 +20,8 @@ const VIEWPORT = { once: true, margin: "-15% 0px -15% 0px" } as const
 
 const PONTOS = [
 	{
-		titulo: "A margem vira sua",
-		texto: "Você para de revender a marca de outra empresa — e a margem que ia pra ela passa a ficar no seu caixa.",
+		titulo: "A margem é sua",
+		texto: "Você para de revender a marca de outra empresa, e a margem que ia pra ela passa a ficar no seu caixa.",
 		icone: IconeMargem,
 	},
 	{
@@ -30,7 +30,7 @@ const PONTOS = [
 		icone: IconeCoordenacao,
 	},
 	{
-		titulo: "O risco sai da conta",
+		titulo: "O risco não é seu",
 		texto: "E com registro e regulatório sob a nossa assessoria, sua marca entra no mercado com a operação blindada de prejuízo.",
 		icone: IconeRisco,
 	},
@@ -53,9 +53,11 @@ export default function PontosValor() {
 						<Icone delay={i * 0.45} />
 						{i < PONTOS.length - 1 && <Conector delay={i * 0.45 + 1.5} />}
 					</div>
-					<div className="pt-1.5 pb-10">
-						<dt className="text-sm font-medium tracking-[-0.01em] text-primary">{titulo}</dt>
-						<dd className="mt-1.5 text-lg leading-snug font-light text-foreground">{texto}</dd>
+					<div className="pt-1 pb-12">
+						<dt className="text-2xl leading-tight font-medium tracking-[-0.025em] text-foreground sm:text-[1.75rem]">
+							{titulo}
+						</dt>
+						<dd className="mt-2.5 leading-relaxed text-muted-foreground">{texto}</dd>
 					</div>
 				</motion.div>
 			))}
