@@ -4,7 +4,6 @@ import Layout from "@/layouts/Layout.astro"
 import RouteMethod, { type Stage } from "@/components/RouteMethod"
 import ContactChat from "@/components/ContactChat"
 import HeroAtmosphere from "@/components/HeroAtmosphere.astro"
-import HeroPouch from "@/components/HeroPouch"
 import { ArrowRight } from "lucide-react"
 
 import logo from "@/assets/logo.png"
@@ -154,9 +153,6 @@ const segmentos = [
 				class="absolute inset-y-0 right-0 z-0 w-full opacity-25 will-change-transform sm:opacity-60 md:w-[72%] md:opacity-100"
 			>
 				<HeroAtmosphere />
-			</div>
-			<div class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[44%] items-center justify-center py-28 pr-[5vw] lg:flex xl:pr-[7vw]">
-				<HeroPouch client:load />
 			</div>
 
 			<div class="relative z-20 mx-auto w-full max-w-6xl px-6">
