@@ -89,7 +89,21 @@ Como não há banco de fotos real da GA Food, as imagens atuais (V3) foram gerad
 
 ## Ícones
 
-Lineares, discretos, sem preenchimento pesado (briefing, seção 10). Usar `lucide-react` (já instalado via shadcn) como base — é o padrão do preset Nova e cobre bem o estilo pedido.
+Lineares, discretos, sem preenchimento pesado (briefing, seção 10). `lucide-react` cobre os ícones de UI (seta, e-mail, chat).
+
+**Ícones autorais das 7 etapas (2026-09-12)** — `src/components/StageIcon.tsx`. Os genéricos de biblioteca (`Compass`, `FlaskConical`, `Rocket`) serviriam a qualquer empresa; os autorais falam o vocabulário do private label e só fazem sentido aqui:
+
+| Etapa | Desenho |
+|---|---|
+| Diagnóstico & Estratégia | Briefing sob a lente |
+| Desenvolvimento de Produto | Funil de blend: matérias-primas distintas entrando, um produto só saindo |
+| Branding & Design | Etiqueta com a marca já aplicada |
+| Embalagem | **Stand-up pouch** — a forma mais icônica do private label |
+| Registros & Regulatório | Documento com selo |
+| Produção & Logística | Caixa selada sobre os rolos da esteira |
+| Lançamento & Suporte | O produto na prateleira |
+
+Regra: malha 24×24 e traço 1.5 iguais aos da lucide, pra conviverem sem destoar. Cada traço se desenha (`pathLength` animado) quando a etapa entra em cena, escalonado na ordem em que a mão desenharia.
 
 ## O que evitar (briefing, seção 10 — regra dura)
 

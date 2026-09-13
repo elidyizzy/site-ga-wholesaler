@@ -28,49 +28,49 @@ const stageSources = [
 		numero: "01",
 		titulo: "Diagnóstico & Estratégia",
 		descricao: "Ideia, público, canal e objetivo mapeados pra definir o caminho certo do projeto.",
-		icone: "compass",
+		icone: "diagnostico",
 		imagem: diagnosticoEstrategia,
 	},
 	{
 		numero: "02",
 		titulo: "Desenvolvimento de Produto",
 		descricao: "Curadoria de matéria-prima, blends e especificações até chegar num produto viável.",
-		icone: "flask-conical",
+		icone: "produto",
 		imagem: desenvolvimentoProduto,
 	},
 	{
 		numero: "03",
 		titulo: "Branding & Design",
 		descricao: "Naming, identidade e conceito que criam a diferenciação da marca.",
-		icone: "palette",
+		icone: "branding",
 		imagem: brandingDesign,
 	},
 	{
 		numero: "04",
 		titulo: "Embalagem",
 		descricao: "Formato, material e rotulagem que transformam produto em apresentação de mercado.",
-		icone: "package-check",
+		icone: "embalagem",
 		imagem: embalagem,
 	},
 	{
 		numero: "05",
 		titulo: "Registros & Regulatório",
 		descricao: "Propriedade intelectual, INPI e exigências regulatórias resolvidas antes de virarem risco.",
-		icone: "shield-check",
+		icone: "regulatorio",
 		imagem: registrosRegulatorio,
 	},
 	{
 		numero: "06",
 		titulo: "Produção & Logística",
 		descricao: "Produção, controle de qualidade e logística com o padrão e a escala que o projeto pede.",
-		icone: "factory",
+		icone: "producao",
 		imagem: producaoLogistica,
 	},
 	{
 		numero: "07",
 		titulo: "Lançamento & Suporte",
 		descricao: "Materiais e suporte pra transformar o produto lançado em negócio de verdade.",
-		icone: "rocket",
+		icone: "lancamento",
 		imagem: lancamentoSuporte,
 	},
 ] as const
@@ -150,14 +150,18 @@ const segmentos = [
 				Fale com um Consultor GA
 			</a>
 		</div>
+		<div class="absolute inset-x-0 bottom-0 h-px overflow-hidden" aria-hidden="true">
+			<div id="scroll-progress" class="h-full w-full origin-left scale-x-0 bg-primary"></div>
+		</div>
 	</header>
 
 	<main>
 		<section class="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-muted pb-24 pt-32">
 			<Image
+				id="hero-image"
 				src={hero}
 				alt="Fundador da GA Food avaliando embalagens private label"
-				class="absolute inset-0 z-0 h-full w-full object-cover"
+				class="absolute inset-0 z-0 h-[118%] w-full object-cover will-change-transform"
 				widths={[768, 1280, 1920, 2752]}
 				sizes="100vw"
 				loading="eager"
@@ -344,10 +348,15 @@ const segmentos = [
 									widths={[320, 480, 640]}
 									sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent" />
-								<div class="absolute right-5 bottom-5 left-5">
+								<div class="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
+								<div class="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/35 to-foreground/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+								<div class="absolute right-5 bottom-5 left-5 transition-transform duration-500 ease-out group-hover:-translate-y-1">
 									<p class="text-lg font-medium tracking-[-0.01em] text-primary-foreground">{segmento.titulo}</p>
 									<p class="mt-1 text-sm text-primary-foreground/70">{segmento.descricao}</p>
+									<span class="mt-3 flex items-center gap-1.5 text-sm font-medium text-primary-foreground opacity-0 transition-all duration-500 ease-out group-hover:opacity-100">
+										Falar sobre esse cenário
+										<ArrowRight className="size-3.5" />
+									</span>
 								</div>
 							</a>
 						))

@@ -231,15 +231,50 @@
   /* Camada atmosférica: a técnica de "mesh" do Stripe, mas inteiramente derivada
      da paleta travada (taupe + creme). Nenhuma cor saturada, nenhum gradiente
      chamativo — só profundidade de ambiente onde antes havia branco chapado. */
-  .atmosphere-warm {
+  .atmosphere-warm,
+  .atmosphere-warm-soft {
+    position: relative;
+    isolation: isolate;
+    }
+  .atmosphere-warm::before,
+  .atmosphere-warm-soft::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+    animation: atmosphere-drift 30s ease-in-out infinite alternate;
+    }
+  .atmosphere-warm::before {
     background-image:
       radial-gradient(58% 52% at 12% 0%, rgba(138, 109, 80, 0.13), transparent 72%),
       radial-gradient(46% 46% at 88% 4%, rgba(212, 197, 176, 0.4), transparent 72%),
       radial-gradient(70% 38% at 50% 100%, rgba(244, 239, 231, 0.85), transparent 78%);
     }
-  .atmosphere-warm-soft {
+  .atmosphere-warm-soft::before {
     background-image:
       radial-gradient(50% 46% at 85% 0%, rgba(138, 109, 80, 0.09), transparent 70%),
       radial-gradient(55% 40% at 10% 100%, rgba(244, 239, 231, 0.7), transparent 75%);
+    animation-duration: 38s;
+    animation-direction: alternate-reverse;
+    }
+}
+
+/* A atmosfera respira: deriva lenta o bastante pra nunca chamar atenção,
+   presente o bastante pra a página não parecer uma imagem parada. */
+@keyframes atmosphere-drift {
+  from {
+    transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+    }
+  to {
+    transform: translate3d(2%, 1.5%, 0) scale(1.09);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-warm::before,
+  .atmosphere-warm-soft::before {
+    animation: none;
     }
 }

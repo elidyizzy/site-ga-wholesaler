@@ -61,6 +61,43 @@ const { title, description } = Astro.props
 				header.classList.add("is-solid")
 			}
 
+			// Progresso de leitura na régua do header + parallax do hero.
+			// Um rAF só pros dois, em transform, pra não pagar layout a cada scroll.
+			const progress = document.getElementById("scroll-progress")
+			const heroImage = document.getElementById("hero-image")
+			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+			if (progress || heroImage) {
+				let ticking = false
+
+				const onFrame = () => {
+					const scrolled = window.scrollY
+					const max = document.documentElement.scrollHeight - window.innerHeight
+
+					if (progress && max > 0) {
+						progress.style.transform = `scaleX(${Math.min(scrolled / max, 1)})`
+					}
+
+					if (heroImage && !reducedMotion && scrolled < window.innerHeight * 1.2) {
+						heroImage.style.transform = `translate3d(0, ${scrolled * 0.16}px, 0)`
+					}
+
+					ticking = false
+				}
+
+				window.addEventListener(
+					"scroll",
+					() => {
+						if (ticking) return
+						ticking = true
+						requestAnimationFrame(onFrame)
+					},
+					{ passive: true }
+				)
+
+				onFrame()
+			}
+
 			// Reveal de entrada: uma vez por bloco, nunca repetido no scroll de volta.
 			const revealables = document.querySelectorAll("[data-reveal]")
 

@@ -1,32 +1,13 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import {
-	Compass,
-	FlaskConical,
-	Palette,
-	PackageCheck,
-	ShieldCheck,
-	Factory,
-	Rocket,
-	ArrowRight,
-	type LucideIcon,
-} from "lucide-react"
-
-const ICONS: Record<string, LucideIcon> = {
-	compass: Compass,
-	"flask-conical": FlaskConical,
-	palette: Palette,
-	"package-check": PackageCheck,
-	"shield-check": ShieldCheck,
-	factory: Factory,
-	rocket: Rocket,
-}
+import { ArrowRight } from "lucide-react"
+import StageIcon, { type StageIconName } from "./StageIcon"
 
 export interface Stage {
 	numero: string
 	titulo: string
 	descricao: string
-	icone: keyof typeof ICONS
+	icone: StageIconName
 	imagemSrc: string
 	imagemAlt: string
 }
@@ -64,7 +45,6 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 			<div className="flex flex-col gap-16 md:gap-20">
 				{stages.map((stage, i) => {
 					const fromLeft = i % 2 === 0
-					const Icon = ICONS[stage.icone]
 					return (
 						<div key={stage.numero} className="relative pl-16 md:pl-0">
 							<motion.div
@@ -100,11 +80,9 @@ export default function RouteMethod({ stages }: { stages: Stage[] }) {
 										className="h-full w-full object-cover"
 									/>
 								</div>
-								<div className="flex flex-col gap-1.5">
-									<div className={`flex items-center gap-2.5 ${fromLeft ? "md:flex-row-reverse" : ""}`}>
-										<Icon className="size-4 shrink-0 text-primary" strokeWidth={1.5} />
-										<h3 className="text-lg font-medium tracking-[-0.01em] text-foreground">{stage.titulo}</h3>
-									</div>
+								<div className={`flex flex-col gap-2 ${fromLeft ? "md:items-end" : ""}`}>
+									<StageIcon name={stage.icone} className="size-9 text-primary" />
+									<h3 className="mt-1 text-lg font-medium tracking-[-0.01em] text-foreground">{stage.titulo}</h3>
 									<p className="text-sm text-muted-foreground">{stage.descricao}</p>
 									<a
 										href="#contato"
