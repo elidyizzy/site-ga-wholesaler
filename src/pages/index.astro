@@ -5,6 +5,7 @@ import RouteMethod, { type Stage } from "@/components/RouteMethod"
 import ContactChat from "@/components/ContactChat"
 import HeroAtmosphere from "@/components/HeroAtmosphere.astro"
 import HeroPacote from "@/components/HeroPacote"
+import PontosValor from "@/components/PontosValor"
 import { ArrowRight } from "lucide-react"
 
 import logo from "@/assets/logo.png"
@@ -212,60 +213,13 @@ const segmentos = [
 			<div class="absolute bottom-0 left-6 z-20 h-24 w-px bg-gradient-to-b from-transparent to-primary/60 md:left-1/2"></div>
 		</section>
 
-		<section class="bg-background">
-			<div class="grid md:grid-cols-2 md:items-stretch">
-				<div class="order-2 px-6 py-16 md:order-1 md:flex md:py-28 md:pr-14 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-20">
-					<div class="md:my-auto">
-						<h2 class="text-3xl leading-[1.1] font-light tracking-[-0.03em] text-balance text-foreground sm:text-4xl">
-							Colocar sua marca em um produto é só o começo. Construir uma marca de verdade é o
-							negócio.
-						</h2>
-						<p class="mt-6 max-w-lg text-muted-foreground">
-							Começamos pela necessidade, não pelo produto: entendemos o objetivo, selecionamos o
-							caminho técnico e comercial certo e coordenamos a execução — do diagnóstico ao
-							produto na prateleira, sem que você precise montar essa engrenagem sozinho.
-						</p>
-
-						<dl class="mt-10 max-w-lg space-y-5">
-							<div class="flex gap-4">
-								<dt class="w-1 shrink-0 rounded-full bg-primary" aria-hidden="true"></dt>
-								<dd>
-									<span class="block text-sm font-medium tracking-[-0.01em] text-primary">Margem</span>
-									<span class="mt-0.5 block text-foreground">
-										Fica com você, não com quem revende a marca de outra empresa.
-									</span>
-								</dd>
-							</div>
-							<div class="flex gap-4">
-								<dt class="w-1 shrink-0 rounded-full bg-primary" aria-hidden="true"></dt>
-								<dd>
-									<span class="block text-sm font-medium tracking-[-0.01em] text-primary">Coordenação</span>
-									<span class="mt-0.5 block text-foreground">
-										Um parceiro cuida das sete etapas. Você foca em vender.
-									</span>
-								</dd>
-							</div>
-							<div class="flex gap-4">
-								<dt class="w-1 shrink-0 rounded-full bg-primary" aria-hidden="true"></dt>
-								<dd>
-									<span class="block text-sm font-medium tracking-[-0.01em] text-primary">Risco</span>
-									<span class="mt-0.5 block text-foreground">
-										Registro e regulatório resolvidos antes de virarem prejuízo.
-									</span>
-								</dd>
-							</div>
-						</dl>
-					</div>
-				</div>
-				<div class="order-1 aspect-4/3 md:order-2 md:aspect-auto">
-					<Image
-						src={diagnosticoEstrategia}
-						alt="Equipe da GA Food em reunião de diagnóstico e estratégia de marca"
-						class="h-full w-full object-cover"
-						widths={[480, 768, 1024, 1440]}
-						sizes="(min-width: 768px) 50vw, 100vw"
-					/>
-				</div>
+		<section class="bg-background py-28">
+			<div class="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
+				<h2 class="text-4xl leading-[1.05] font-light tracking-[-0.04em] text-balance text-foreground sm:text-5xl">
+					Colocar sua marca em um produto é só o começo. Construir uma marca de verdade é o
+					negócio.
+				</h2>
+				<PontosValor client:visible />
 			</div>
 		</section>
 
