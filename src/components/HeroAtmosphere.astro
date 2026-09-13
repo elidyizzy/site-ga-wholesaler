@@ -1,0 +1,130 @@
+---
+/**
+ * Escultura de luz do hero — peça gráfica autoral, não fotografia.
+ *
+ * O mesh do Stripe também é asset gráfico, não foto: é o que permite controle
+ * total de paleta e nitidez em qualquer tela. A força dele vem de amplitude
+ * tonal alta (saturado sobre branco). Sem cor saturada disponível aqui, a
+ * amplitude vem do tom: a peça percorre creme → taupe → café escuro, tudo
+ * dentro da paleta travada da GA Food.
+ *
+ * Composição: a seda nasce fora do quadro à direita e derrama para dentro,
+ * deixando a metade esquerda livre para a tipografia.
+ */
+---
+
+<svg
+	class="h-full w-full"
+	viewBox="0 0 900 1000"
+	preserveAspectRatio="xMidYMid slice"
+	aria-hidden="true"
+	focusable="false"
+>
+	<defs>
+		<linearGradient id="sheet-deep" x1="85%" y1="0%" x2="15%" y2="100%">
+			<stop offset="0%" stop-color="#2E2117" />
+			<stop offset="38%" stop-color="#6E543B" />
+			<stop offset="72%" stop-color="#B08F6B" />
+			<stop offset="100%" stop-color="#F4EFE7" />
+		</linearGradient>
+		<linearGradient id="sheet-mid" x1="70%" y1="10%" x2="10%" y2="95%">
+			<stop offset="0%" stop-color="#8A6D50" />
+			<stop offset="45%" stop-color="#C0A382" />
+			<stop offset="100%" stop-color="#F7F2E8" />
+		</linearGradient>
+		<linearGradient id="sheet-light" x1="60%" y1="0%" x2="20%" y2="100%">
+			<stop offset="0%" stop-color="#FDFBF2" />
+			<stop offset="55%" stop-color="#E8DBC6" />
+			<stop offset="100%" stop-color="#C9AE8C" />
+		</linearGradient>
+		<linearGradient id="sheet-shadow" x1="80%" y1="20%" x2="20%" y2="100%">
+			<stop offset="0%" stop-color="#211D18" />
+			<stop offset="60%" stop-color="#4A3728" />
+			<stop offset="100%" stop-color="#8A6D50" />
+		</linearGradient>
+
+		<!-- Máscara por luminância: preto oculta, branco revela. A peça nasce
+		     invisível à esquerda (onde mora a tipografia) e ganha corpo à direita. -->
+		<linearGradient id="fade-left" x1="0%" y1="0%" x2="100%" y2="0%">
+			<stop offset="0%" stop-color="#000000" />
+			<stop offset="26%" stop-color="#3a3a3a" />
+			<stop offset="58%" stop-color="#c8c8c8" />
+			<stop offset="100%" stop-color="#ffffff" />
+		</linearGradient>
+		<mask id="bleed">
+			<rect width="900" height="1000" fill="url(#fade-left)" />
+		</mask>
+
+		<filter id="silk" x="-20%" y="-20%" width="140%" height="140%">
+			<feGaussianBlur stdDeviation="14" />
+		</filter>
+		<filter id="silk-soft" x="-25%" y="-25%" width="150%" height="150%">
+			<feGaussianBlur stdDeviation="34" />
+		</filter>
+		<filter id="edge" x="-15%" y="-15%" width="130%" height="130%">
+			<feGaussianBlur stdDeviation="5" />
+		</filter>
+	</defs>
+
+	<g mask="url(#bleed)">
+		<!-- Folha profunda: a massa escura que dá amplitude tonal ao conjunto. -->
+		<path
+			d="M900 -60C700 60 520 240 430 470c-64 164-88 330-96 590h566V-60Z"
+			fill="url(#sheet-deep)"
+			filter="url(#silk-soft)"
+			opacity="0.95"
+		/>
+
+		<!-- Folha intermediária: a dobra principal da seda. -->
+		<path
+			d="M900 90C742 196 604 348 520 546c-60 142-90 292-104 454h484V90Z"
+			fill="url(#sheet-mid)"
+			filter="url(#silk)"
+			opacity="0.92"
+		/>
+
+		<!-- Sombra da dobra: o que faz a seda ter volume em vez de virar mancha. -->
+		<path
+			d="M900 40C768 150 660 300 596 470c-48 128-74 262-86 400h390V40Z"
+			fill="url(#sheet-shadow)"
+			filter="url(#silk)"
+			opacity="0.5"
+		/>
+
+		<!-- Folha clara: a luz que corre por cima da dobra. -->
+		<path
+			d="M900 230C790 318 700 440 640 592c-42 106-66 224-78 348h338V230Z"
+			fill="url(#sheet-light)"
+			filter="url(#silk)"
+			opacity="0.88"
+		/>
+
+		<!-- Arestas: as linhas nítidas que impedem tudo de virar borrão. -->
+		<g filter="url(#edge)">
+			<path
+				d="M900 20C744 140 620 292 542 486c-56 140-86 290-100 454"
+				fill="none"
+				stroke="#FDFBF2"
+				stroke-width="3.5"
+				stroke-linecap="round"
+				opacity="0.85"
+			/>
+			<path
+				d="M900 300C812 380 738 482 686 604c-38 88-60 186-72 296"
+				fill="none"
+				stroke="#F7F1E6"
+				stroke-width="2"
+				stroke-linecap="round"
+				opacity="0.6"
+			/>
+			<path
+				d="M900 -20C724 110 580 280 496 500"
+				fill="none"
+				stroke="#2E2117"
+				stroke-width="2.5"
+				stroke-linecap="round"
+				opacity="0.45"
+			/>
+		</g>
+	</g>
+</svg>

@@ -166,38 +166,15 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     }
-  .header-logo {
-    transition: opacity 500ms ease-out;
-    }
-  .header-logo--solid {
-    opacity: 0;
-    }
-  #site-header.is-solid .header-logo--light {
-    opacity: 0;
-    }
-  #site-header.is-solid .header-logo--solid {
-    opacity: 1;
-    }
   .header-tagline {
-    border-left: 1px solid rgba(255, 255, 255, 0.28);
-    color: rgba(255, 255, 255, 0.72);
-    transition: color 500ms ease-out, border-color 500ms ease-out;
-    }
-  #site-header.is-solid .header-tagline {
-    border-left-color: var(--border);
+    border-left: 1px solid var(--border);
     color: var(--muted-foreground);
     }
   .header-nav a {
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--muted-foreground);
     transition: color 300ms ease-out;
     }
   .header-nav a:hover {
-    color: #ffffff;
-    }
-  #site-header.is-solid .header-nav a {
-    color: var(--muted-foreground);
-    }
-  #site-header.is-solid .header-nav a:hover {
     color: var(--foreground);
     }
 

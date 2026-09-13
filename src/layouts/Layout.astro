@@ -64,7 +64,7 @@ const { title, description } = Astro.props
 			// Progresso de leitura na régua do header + parallax do hero.
 			// Um rAF só pros dois, em transform, pra não pagar layout a cada scroll.
 			const progress = document.getElementById("scroll-progress")
-			const heroImage = document.getElementById("hero-image")
+			const heroImage = document.getElementById("hero-atmosphere")
 			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
 			if (progress || heroImage) {
@@ -79,7 +79,7 @@ const { title, description } = Astro.props
 					}
 
 					if (heroImage && !reducedMotion && scrolled < window.innerHeight * 1.2) {
-						heroImage.style.transform = `translate3d(0, ${scrolled * 0.16}px, 0)`
+						heroImage.style.transform = `translate3d(0, ${scrolled * 0.1}px, 0)`
 					}
 
 					ticking = false
