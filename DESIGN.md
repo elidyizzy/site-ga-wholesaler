@@ -2,6 +2,8 @@
 
 Fonte: `briefing/Briefing_Novo_Website_GA_Food_Wholesaler.docx` e `briefing/GA_Food_Private_Label_Brand_Development.pdf`. Este documento é a autoridade visual do projeto — qualquer refinamento de UI deve honrar o que está aqui.
 
+> **Antes de mexer em UI, ler `DIARIO.md`** — registro de execução com os erros já cometidos (mudança invisível, mockup em SVG, formato errado de embalagem, contraste não medido) e o que funcionou. Existe pra não repetir.
+
 ## Posicionamento
 
 A GA Food não quer ser vista como torrefação/fabricante. É um **hub de desenvolvimento de marca própria** (Private Label & Brand Development), com café como vertical forte mas não limitadora. Mensagem-mãe: **"Você tem a ideia. Nós cuidamos do resto."**
@@ -53,14 +55,16 @@ Régua de acabamento adotada: **Linear (linear.app)** — só o nível de precis
 
 | Papel | Tamanho | Peso | Line-height | Tracking | Uso |
 |---|---|---|---|---|---|
-| `display-xl` | `clamp(2.75rem,7vw,6rem)` | 600 (semibold) | 0.95 | -0.03em | H1 do hero — único uso |
-| `display-lg` | `text-4xl sm:text-5xl` (36→48px) | 600 | 1.1 | -0.02em | Headline de seção (Método, Contato) |
-| `display-md` | `text-3xl sm:text-4xl` (30→36px) | 600 | 1.15 | -0.015em | Headline de bloco (posicionamento, café) |
+| `display-xl` | `clamp(2.75rem,7vw,6rem)` | **300 (light)** | 0.95 | -0.045em | H1 do hero — único uso |
+| `display-lg` | `text-4xl sm:text-5xl` (36→48px) | **300 (light)** | 1.1 | -0.04em | Headline de seção (Método, Contato) |
+| `display-md` | `text-3xl sm:text-4xl` (30→36px) | **300 (light)** | 1.15 | -0.03em | Headline de bloco (posicionamento, café) |
 | `headline` | `text-lg` a `text-xl` (18–20px) | 500 (medium) | 1.3 | -0.01em | Título de card/etapa (ex. `RouteMethod` stage title) |
 | `body-lg` | `text-lg` (18px) | 300–400 | 1.5 | 0 | Subtítulo do hero, parágrafo de abertura |
 | `body` | `text-base` (16px) | 400 | 1.5+ | 0 | Corpo padrão |
 | `body-sm` | `text-sm` (14px) | 400–500 | 1.5 | 0 | Descrição de etapa/segmento, rótulo de botão |
 | `caption` | `text-xs` (12px) | 500 | 1.4 | 0.05em (positivo, só em uppercase labels) | Rótulos tipo "Nossos canais de relacionamento" |
+
+**Peso leve é a assinatura (2026-09-12).** Todo `display-*` é **300**, nunca 600. Foi a mudança de maior impacto visual do projeto: `font-semibold` em tudo era o que dava ao site a cara de template. Subir pra 400+ em display devolve esse problema — o "ar editorial" vem do peso leve em escala grande com tracking apertado. Peso 500 fica reservado a títulos pequenos (`headline`), onde 300 enfraquece demais.
 
 Regra: todo título `display-*` leva tracking negativo — nenhum headline de seção fica com tracking padrão do navegador. Nunca usar `eyebrow`/kicker acima de headline (regra dura do craft floor: o próprio título carrega o peso, um rótulo em cima é enfeite, não hierarquia).
 
@@ -86,6 +90,34 @@ Direção obrigatória (briefing, seções 10 e 15). **Histórico de correções
 - **V3 rejeitada em produção (2026-09-01):** mesmo validada em referência, ao ver o site montado o cliente achou as fotos amadoras/reconhecivelmente geradas por IA — "não dá vontade de ter uma marca de café ou de qualquer outro private label". **Sem direção V4 definida ainda** — cliente pediu pra só registrar o problema por enquanto, sem mexer nas imagens nesta rodada. Opções levantadas e não decididas: (a) nova leva de IA com direção mais específica sobre o que falhou, (b) banco de imagens premium licenciado, (c) ensaio fotográfico real da GA Food. Não gerar nem trocar imagens sem essa decisão.
 
 Como não há banco de fotos real da GA Food, as imagens atuais (V3) foram geradas por IA externa seguindo os prompts em `prompt/` (um arquivo `.txt` por imagem, ver `prompt/README.md`) para manter a mesma "sessão de fotos" visual em todas as páginas — mas essa abordagem está em aberto, ver V3 acima.
+
+
+## Hero (decidido em 2026-09-12)
+
+O hero **não usa fotografia de banco nem de IA nossa**. Percurso até aqui: foto com scrim preto → escultura de luz em SVG → pacote desenhado em SVG (3 tentativas, todas rejeitadas) → **imagem real do cliente com etiqueta ao vivo por cima**.
+
+- **Imagem**: `src/assets/images/pacote-private-label.jpg` — recorte de `apresentação private label.pdf` (material comercial do próprio GA Food), onde o pacote kraft aparece com a etiqueta em branco. Não entra na discussão da direção V1/V2/V3 e não carrega marca de terceiro. Procedência registrada em `prompt/README.md`.
+- **Etiqueta ao vivo** (`HeroPacote.tsx`): avança SEU PROJETO → SUA MARCA → SEU MERCADO, ancorada sobre a etiqueta real (cujo texto está mal renderizado na peça original). A ficha técnica se preenche junto — o que entra "a definir" no diagnóstico termina resolvido na prateleira.
+- **Fundo claro obrigatório**: o hero escuro anterior violava a regra de fundo branco do briefing. A escultura de luz (`HeroAtmosphere.astro`) sangra pela direita e deixa a esquerda livre pra tipografia.
+- O container do pacote é travado na proporção exata da imagem (`aspect-[1468/2310]`) — sem isso, `object-cover` escala e corta, e a etiqueta ao vivo desalinha da real.
+
+## Movimento (decidido em 2026-09-12)
+
+Quatro camadas, nenhuma repetida em toda seção:
+
+1. **Atmosfera que respira** — deriva de 30s nas camadas de luz. Desliga em `prefers-reduced-motion`.
+2. **Régua de progresso de leitura** no header.
+3. **Parallax** na peça do hero.
+4. **Reveal escalonado** — só no hero. O Método já tem o dele na linha da rota que preenche com o scroll.
+
+Regra dura: *um momento autoral de movimento, não a mesma entrada em toda seção.* Progresso e parallax dividem um único `requestAnimationFrame` em `transform`.
+
+## Elevação e atmosfera
+
+- Sombra sempre **tintada no grafite quente da marca** (`#211D18`), nunca preto puro. Três níveis: `--shadow-lift-1/2/3` em `global.css`. Nada de sombra fora dessa escala.
+- Camada atmosférica (`.atmosphere-warm`, `.atmosphere-warm-soft`) derivada só de taupe e creme.
+- **Aprendizado que vale pra tudo**: sem cor saturada disponível, presença vem de **amplitude tonal**, não de efeito. Taupe a 10% sobre branco é invisível; a peça precisa percorrer creme → café escuro pra existir.
+- Superfícies do navegador (seleção de texto, scrollbar) são tematizadas, não ficam no default.
 
 ## Ícones
 
