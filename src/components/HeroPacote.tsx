@@ -11,19 +11,24 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } fro
  *
  * O que é nosso, e é o argumento do site:
  *
- * 1. **A etiqueta troca de marca ao vivo**, ancorada em cima da etiqueta real do
- *    pacote — que na peça original tem o texto mal renderizado. Mesma estrutura,
- *    marca diferente: private label demonstrado, não explicado.
+ * 1. **A etiqueta avança pela jornada** — SEU PROJETO → SUA MARCA → SEU MERCADO —
+ *    ancorada em cima da etiqueta real do pacote, que na peça original tem o texto
+ *    mal renderizado. A ficha técnica se preenche junto: o que entra "a definir"
+ *    no diagnóstico termina resolvido na prateleira.
  * 2. **A revelação**: prancha de projeto → o pacote surge → a etiqueta assenta.
  * 3. **O pacote acompanha o cursor**, girando de leve em perspectiva.
  */
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
-const MARCAS = [
-	{ nome: "SERRA ALTA", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G" },
-	{ nome: "SUA MARCA", origem: "VOCÊ ESCOLHE", torra: "A DEFINIR", peso: "250G" },
-	{ nome: "CASA VERDE", origem: "CERRADO", torra: "ESCURA", peso: "500G" },
+/**
+ * A etiqueta conta a jornada, não um rodízio de marcas: o projeto entra em
+ * aberto e vai se preenchendo até o produto estar na prateleira.
+ */
+const ETAPAS = [
+	{ titulo: "SEU PROJETO", origem: "A DEFINIR", torra: "EM TESTE", peso: "A DEFINIR", fase: "DIAGNÓSTICO" },
+	{ titulo: "SUA MARCA", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "BRANDING" },
+	{ titulo: "SEU MERCADO", origem: "SUL DE MINAS", torra: "MÉDIA", peso: "250G", fase: "NA PRATELEIRA" },
 ]
 
 /** Posição da etiqueta real dentro da imagem, em % — medida sobre o recorte. */
@@ -37,7 +42,7 @@ interface Props {
 
 export default function HeroPacote({ src, width, height }: Props) {
 	const reduced = useReducedMotion()
-	const [marca, setMarca] = useState(0)
+	const [etapa, setEtapa] = useState(0)
 
 	const px = useMotionValue(0)
 	const py = useMotionValue(0)
@@ -54,12 +59,12 @@ export default function HeroPacote({ src, width, height }: Props) {
 		return () => window.removeEventListener("pointermove", onMove)
 	}, [px, py, reduced])
 
-	// a marca só começa a girar depois que o pacote terminou de entrar
+	// a jornada só começa a avançar depois que o pacote terminou de entrar
 	useEffect(() => {
 		let intervalo: ReturnType<typeof setInterval>
 		const inicio = setTimeout(() => {
-			setMarca((m) => (m + 1) % MARCAS.length)
-			intervalo = setInterval(() => setMarca((m) => (m + 1) % MARCAS.length), 3600)
+			setEtapa((e) => (e + 1) % ETAPAS.length)
+			intervalo = setInterval(() => setEtapa((e) => (e + 1) % ETAPAS.length), 3600)
 		}, 4200)
 		return () => {
 			clearTimeout(inicio)
@@ -70,7 +75,7 @@ export default function HeroPacote({ src, width, height }: Props) {
 	const t = (delay: number, duration: number) =>
 		reduced ? { duration: 0 } : { duration, delay, ease: EASE }
 
-	const m = MARCAS[marca]
+	const e = ETAPAS[etapa]
 
 	return (
 		<motion.div
@@ -155,7 +160,7 @@ export default function HeroPacote({ src, width, height }: Props) {
 					>
 						<div className="flex h-full w-full flex-col justify-between rounded-[3px] bg-[#FBF7EE] px-[7%] py-[6%] shadow-[inset_0_0_18px_rgba(120,96,62,0.16)]">
 							<motion.div
-								key={marca}
+								key={etapa}
 								initial={reduced ? false : { opacity: 0, y: 7 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, ease: EASE }}
@@ -163,26 +168,26 @@ export default function HeroPacote({ src, width, height }: Props) {
 							>
 								<p className="text-[clamp(6px,0.62vw,10px)] tracking-[0.22em] text-primary">PRIVATE LABEL</p>
 								<p className="mt-[2%] text-[clamp(15px,1.75vw,30px)] leading-none font-semibold tracking-[-0.02em] text-foreground">
-									{m.nome}
+									{e.titulo}
 								</p>
 
 								<div className="mt-auto border-t border-primary/25 pt-[5%]">
 									<div className="grid grid-cols-2 gap-x-[6%] gap-y-[3%]">
 										<div>
 											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">ORIGEM</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{m.origem}</p>
+											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.origem}</p>
 										</div>
 										<div>
 											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">TORRA</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{m.torra}</p>
+											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.torra}</p>
 										</div>
 										<div>
 											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">PESO</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{m.peso}</p>
+											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">{e.peso}</p>
 										</div>
 										<div>
-											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">PRODUÇÃO</p>
-											<p className="text-[clamp(7px,0.72vw,12px)] text-foreground/85">GA FOOD</p>
+											<p className="text-[clamp(5px,0.5vw,8px)] tracking-[0.16em] text-muted-foreground/70">FASE</p>
+											<p className="text-[clamp(7px,0.72vw,12px)] text-primary">{e.fase}</p>
 										</div>
 									</div>
 								</div>
