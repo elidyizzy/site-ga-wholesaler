@@ -1,0 +1,58 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogLayout title={post.data.title} description={post.data.description} image={post.data.heroImage}>
+	<main class="min-h-screen bg-background pt-32 pb-24">
+		<article class="mx-auto max-w-3xl px-6">
+			
+			<header class="mb-12 text-center" data-reveal>
+
+				<h1 class="text-4xl font-light tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-6xl mb-6">
+					{post.data.title}
+				</h1>
+				<p class="mx-auto max-w-2xl text-lg text-muted-foreground text-balance">
+					{post.data.description}
+				</p>
+			</header>
+
+			{post.data.heroImage ? (
+				<div class="mb-16 aspect-[16/9] w-full overflow-hidden rounded-3xl bg-secondary shadow-[var(--shadow-lift-2)]" data-reveal style="--reveal-delay: 200ms">
+					<img 
+						src={post.data.heroImage} 
+						alt="" 
+						class="h-full w-full object-cover"
+					/>
+				</div>
+			) : (
+				<div class="mb-16 aspect-[16/9] w-full rounded-3xl bg-secondary flex items-center justify-center border border-border" data-reveal style="--reveal-delay: 200ms">
+					<span class="text-sm font-medium tracking-widest text-muted-foreground uppercase">Imagem Pendente - Capa do Artigo</span>
+				</div>
+			)}
+
+			<div class="prose prose-neutral dark:prose-invert prose-lg mx-auto prose-headings:font-light prose-headings:tracking-[-0.02em] prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-2xl prose-p:leading-relaxed" data-reveal style="--reveal-delay: 300ms">
+				<Content />
+			</div>
+
+			<div class="mt-20 border-t border-border pt-10 text-center" data-reveal>
+				<p class="mb-6 text-sm text-muted-foreground">Quer começar o seu projeto?</p>
+				<a href="/#contato" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-1)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-2)] active:scale-95">
+					Falar com um Consultor GA
+				</a>
+			</div>
+			
+		</article>
+	</main>
+</BlogLayout>

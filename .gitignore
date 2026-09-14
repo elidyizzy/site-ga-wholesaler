@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # arquivos de lock temporários do Office
 ~$*
+
+.vercel

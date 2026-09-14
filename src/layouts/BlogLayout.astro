@@ -1,0 +1,87 @@
+---
+import Layout from './Layout.astro';
+import { Image } from 'astro:assets';
+import logo from '@/assets/logo.png';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+const { title, description, image } = Astro.props;
+---
+
+<Layout title={title} description={description} image={image}>
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <a href="/" class="flex items-center gap-3">
+                <Image src={logo} alt="GA Food Wholesaler" class="h-8 w-auto md:h-10" />
+            </a>
+            <nav class="hidden items-center gap-8 text-sm font-medium md:flex">
+                <a href="/#metodo" class="text-muted-foreground hover:text-foreground">Método</a>
+                <a href="/#cafe" class="text-muted-foreground hover:text-foreground">Café Private Label</a>
+                <a href="/blog/" class="text-foreground">Blog</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="/#contato" class="inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 active:scale-95">
+                    <span class="hidden sm:inline">Falar com Consultor</span>
+                    <span class="sm:hidden">Consultor GA</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[4px] p-2 z-50 relative" aria-label="Abrir menu">
+                    <span class="block h-[2px] w-5 bg-foreground transition-all duration-300 origin-center"></span>
+                    <span class="block h-[2px] w-5 bg-foreground transition-all duration-300"></span>
+                    <span class="block h-[2px] w-5 bg-foreground transition-all duration-300 origin-center"></span>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300 md:hidden">
+            <a href="/#metodo" class="text-2xl font-light text-foreground mobile-link">Método</a>
+            <a href="/#cafe" class="text-2xl font-light text-foreground mobile-link">Café Private Label</a>
+            <a href="/#segmentos" class="text-2xl font-light text-foreground mobile-link">Para quem é</a>
+            <a href="/blog/" class="text-2xl font-light text-foreground mobile-link">Blog</a>
+        </div>
+    </header>
+
+    <slot />
+
+    <footer class="border-t border-border bg-secondary mt-20">
+		<div class="mx-auto max-w-6xl px-6 pt-20 pb-10">
+			<div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+				<div>
+					<Image src={logo} alt="GA Food Wholesaler" class="h-12 w-auto" />
+					<p class="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+						Private Label &amp; Brand Development. Da ideia ao produto na prateleira, com uma
+						estrutura só.
+					</p>
+				</div>
+				<nav aria-label="Seções do site">
+					<p class="text-xs font-medium tracking-[0.14em] text-foreground uppercase">Navegar</p>
+					<ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+						<li><a href="/#metodo" class="transition-colors hover:text-primary">Private Label 360°</a></li>
+						<li><a href="/#cafe" class="transition-colors hover:text-primary">Café Private Label</a></li>
+						<li><a href="/#segmentos" class="transition-colors hover:text-primary">Para quem é</a></li>
+						<li><a href="/blog/" class="transition-colors hover:text-primary">Blog &amp; Artigos</a></li>
+						<li><a href="/#contato" class="transition-colors hover:text-primary">Falar com um consultor</a></li>
+					</ul>
+				</nav>
+				<div>
+					<p class="text-xs font-medium tracking-[0.14em] text-foreground uppercase">Contato</p>
+					<ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+						<li>
+							<a href="mailto:tranding@gafood.com.br" class="transition-colors hover:text-primary">tranding@gafood.com.br</a>
+						</li>
+						<li>
+							<a href="https://wa.me/553196777753" target="_blank" rel="noopener noreferrer" class="tabular-nums transition-colors hover:text-primary">+55 31 9677-7753</a>
+						</li>
+						<li>
+							<a href="https://www.instagram.com/gafoodwholesaler/" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary">@gafoodwholesaler</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mt-16 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+				<p class="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} GA Food Wholesaler. Todos os direitos reservados.</p>
+			</div>
+		</div>
+	</footer>
+</Layout>

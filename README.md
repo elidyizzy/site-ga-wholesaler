@@ -1,43 +1,66 @@
-# Astro Starter Kit: Minimal
+# GA Food Wholesaler ☕🚀
 
-```sh
-npm create astro@latest -- --template minimal
+> Você tem a ideia. Nós cuidamos do resto. Uma rota só, do diagnóstico ao lançamento, pra transformar sua ideia numa marca própria real.
+
+Este é o repositório oficial do site da **GA Food Wholesaler**, focado em conversão B2B e desenvolvimento de marcas próprias (Private Label) de café premium.
+
+Construído sob uma arquitetura de alta performance focada em conversão, SEO agressivo e carregamento instantâneo.
+
+## 🛠 Arquitetura Técnica
+
+- **Framework:** [Astro](https://astro.build/) (v5+ Content Layer)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Componentes React:** Integração pontual para interatividade avançada (ex: Formulário/Chat interativo).
+- **Conteúdo:** Markdown processado no build. Zero requisições de banco de dados para velocidade máxima.
+- **Animações:** CSS Nativo (`@keyframes`) + Framer Motion (para widgets React).
+- **Metodologia de Design:** Mobile First (100% responsivo) alinhado aos padrões estabelecidos em `DESIGN.md`.
+
+## 🚀 Como Rodar Localmente
+
+Certifique-se de ter o Node.js v18+ instalado.
+
+```bash
+# Instale as dependências
+npm install
+
+# Rode o servidor de desenvolvimento
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abra `http://localhost:4321` no seu navegador.
 
-## 🚀 Project Structure
+### Sobre o Ambiente de Build:
+Devido à arquitetura do Astro v5+ usada aqui, caso o `npm run dev` não reflita instantaneamente mudanças em alguns componentes, recomendamos rodar um build de produção local para testar a fidelidade máxima:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npx serve dist -p 4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📝 Gestão do Blog (Evergreen Content)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+O site possui um blog B2B de alto impacto projetado para SEO.
+Para adicionar novos artigos:
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Adicione um novo arquivo `.md` dentro de `src/content/blog/`.
+2. Certifique-se de preencher a estrutura do Frontmatter:
+   ```yaml
+   ---
+   title: "Título do Artigo"
+   description: "Descrição curta otimizada para SEO."
+   pubDate: "2024-01-01"
+   heroImage: "/images/blog/nome-da-imagem.jpg"
+   author: "GA Food Wholesaler"
+   ---
+   ```
+3. Rode `npm run build`. O Astro irá compilar o Markdown, injetar as tags Open Graph dinamicamente e reconstruir o sitemap XML de forma autônoma.
 
-## 🧞 Commands
+## 📱 Destaques de UX/UI
 
-All commands are run from the root of the project, from a terminal:
+- **Scroll Atmosférico:** Efeito parallax e régua de leitura de progresso controlados via `requestAnimationFrame` em JavaScript puro para evitar perdas de frames.
+- **Magnetic WhatsApp CTA:** Botão pulsante implementado inteiramente em CSS para maximizar engajamento passivo no mobile e desktop sem consumir CPU.
+- **Bento Grid Fluído:** Seções desconstruídas que se reestruturam de 1 para 3 colunas baseadas unicamente na matemática fluída do Tailwind.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Desenvolvido com excelência estratégica para dominar o mercado de Private Label.**

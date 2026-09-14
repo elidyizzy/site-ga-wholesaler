@@ -1,0 +1,61 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const title = "Blog GA Food | Insights sobre Private Label e Café";
+const description = "Artigos sobre desenvolvimento de produto, marca própria de café, branding, fabricação private label e embalagem personalizada.";
+---
+
+<BlogLayout title={title} description={description}>
+	<main class="min-h-screen bg-background pt-32 pb-24">
+		<div class="mx-auto max-w-6xl px-6">
+			
+			<div class="mb-16 max-w-2xl" data-reveal>
+				<h1 class="text-4xl font-light tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-6xl mb-6">
+					Blog GA Food
+				</h1>
+				<p class="text-lg text-muted-foreground text-balance">
+					Estratégias, insights industriais e tendências do mercado de private label para empreendedores, distribuidores e redes de varejo.
+				</p>
+			</div>
+
+			<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+				{sortedPosts.map((post, i) => (
+					<a 
+						href={`/blog/${post.id}/`} 
+						class="group flex flex-col gap-5 rounded-3xl border border-border bg-secondary/50 p-6 transition-all duration-500 hover:border-border hover:bg-secondary hover:shadow-[var(--shadow-lift-2)]"
+						data-reveal 
+						style={`--reveal-delay: ${i * 100}ms`}
+					>
+						<div class="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-muted relative">
+							{post.data.heroImage ? (
+								<img 
+									src={post.data.heroImage} 
+									alt="" 
+									class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
+								/>
+							) : (
+								<div class="absolute inset-0 bg-primary/5 flex items-center justify-center transition-colors duration-700 group-hover:bg-primary/10">
+									<span class="text-sm font-medium tracking-widest text-primary/40 uppercase">Imagem Pendente</span>
+								</div>
+							)}
+						</div>
+						<div class="flex flex-col gap-3">
+
+							<h2 class="text-2xl font-medium tracking-[-0.02em] text-foreground text-balance transition-colors group-hover:text-primary">
+								{post.data.title}
+							</h2>
+							<p class="text-sm leading-relaxed text-muted-foreground line-clamp-2">
+								{post.data.description}
+							</p>
+						</div>
+					</a>
+				))}
+			</div>
+
+		</div>
+	</main>
+</BlogLayout>

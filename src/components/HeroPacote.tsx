@@ -97,7 +97,7 @@ export default function HeroPacote({ src, width, height }: Props) {
 				transition={{ duration: 1.3, delay: 1.1, ease: EASE }}
 			>
 				<motion.div
-					className="relative mx-auto aspect-[1468/2310] w-full max-w-[26rem] overflow-hidden rounded-[1.5rem] shadow-[var(--shadow-lift-3)] sm:rounded-[2rem]"
+					className="relative mx-auto aspect-[1910/1886] w-full"
 					animate={reduced ? undefined : { y: [0, -8, 0] }}
 					transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 4 }}
 				>
@@ -106,7 +106,7 @@ export default function HeroPacote({ src, width, height }: Props) {
 						width={width}
 						height={height}
 						alt="Pacote de café private label com a etiqueta livre para a marca do cliente"
-						className="absolute inset-0 h-full w-full object-cover"
+						className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_28px_45px_rgba(33,29,24,0.22)]"
 						loading="eager"
 						fetchPriority="high"
 					/>

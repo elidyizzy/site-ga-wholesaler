@@ -129,15 +129,25 @@ export default function ContactChat({ whatsappNumber }: Props) {
 							Perfeito, {answers.nome.split(" ")[0]}. Manda esse resumo pro nosso WhatsApp e a gente já
 							te chama com os próximos passos.
 						</ChatBubble>
-						<a
+						<motion.a
 							href={whatsappHref}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-2)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-3)] active:scale-95"
+							animate={{ 
+								scale: [1, 1.05, 1],
+								boxShadow: [
+									"0px 4px 10px rgba(37, 211, 102, 0.3)",
+									"0px 0px 20px rgba(37, 211, 102, 0.7)",
+									"0px 4px 10px rgba(37, 211, 102, 0.3)"
+								]
+							}}
+							transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+							whileTap={{ scale: 0.95 }}
+							className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 text-sm font-medium text-white transition-colors hover:bg-[#22c35e]"
 						>
-							Enviar mensagem
+							Enviar para o WhatsApp
 							<MessageCircle className="size-4" />
-						</a>
+						</motion.a>
 					</motion.div>
 				)}
 			</div>
@@ -153,7 +163,7 @@ function ChatBubble({ from, children }: { from: "bot" | "user"; children: ReactN
 				className={
 					isBot
 						? "max-w-[85%] rounded-2xl rounded-bl-sm bg-secondary px-4 py-2.5 text-sm text-foreground"
-						: "max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-2.5 text-sm text-primary-foreground"
+						: "max-w-[85%] rounded-2xl rounded-br-sm bg-[#D9FDD3] px-4 py-2.5 text-sm text-[#111B21] shadow-sm"
 				}
 			>
 				{children}

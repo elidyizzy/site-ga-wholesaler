@@ -16,8 +16,9 @@ import embalagem from "@/assets/images/embalagem.jpg"
 import registrosRegulatorio from "@/assets/images/registros-regulatorio.jpg"
 import producaoLogistica from "@/assets/images/producao-logistica.png"
 import lancamentoSuporte from "@/assets/images/lancamento-suporte.png"
-import verticalCafe from "@/assets/images/vertical-cafe.jpg"
-import pacotePrivateLabel from "@/assets/images/pacote-private-label.jpg"
+import blocoCafe1 from "@/assets/images/bloco-cafe-privatelabel.jpg"
+import blocoCafe2 from "@/assets/images/bloco-cafe-privatelabel2.jpg"
+import pacotePrivateLabel from "@/assets/images/pacote-private-label.png"
 import segmentoCafeterias from "@/assets/images/segmento-cafeterias.png"
 import segmentoEmporios from "@/assets/images/segmento-emporios.png"
 import segmentoDistribuidores from "@/assets/images/segmento-distribuidores.png"
@@ -93,33 +94,37 @@ const stages: Stage[] = await Promise.all(
 
 const pacoteOtimizado = await getImage({
 	src: pacotePrivateLabel,
-	width: 980,
+	width: 1020,
 	format: "webp",
-	quality: 92,
+	quality: 90,
 })
 
 const segmentos = [
-	{ titulo: "Cafeterias e restaurantes", descricao: "Produtos próprios e experiência.", imagem: segmentoCafeterias },
+	{ titulo: "Cafeterias e restaurantes", descricao: "Produtos próprios e experiência.", imagem: segmentoCafeterias, className: "lg:col-span-2 lg:row-span-2" },
 	{
 		titulo: "Empórios e mercados especializados",
 		descricao: "Linha exclusiva e diferenciação.",
 		imagem: segmentoEmporios,
+		className: "lg:col-span-1"
 	},
 	{
 		titulo: "Distribuidores e atacadistas",
 		descricao: "Portfólio próprio e novas margens.",
 		imagem: segmentoDistribuidores,
+		className: "lg:col-span-1"
 	},
 	{
 		titulo: "Redes e supermercados",
 		descricao: "Escala e padronização.",
 		imagem: segmentoRedesSupermercados,
+		className: "lg:col-span-1"
 	},
-	{ titulo: "Empresas e escritórios", descricao: "Produtos institucionais.", imagem: segmentoEmpresasEscritorios },
+	{ titulo: "Empresas e escritórios", descricao: "Produtos institucionais.", imagem: segmentoEmpresasEscritorios, className: "lg:col-span-1" },
 	{
 		titulo: "Criadores e empreendedores",
 		descricao: "Estrutura para tirar a ideia do papel.",
 		imagem: segmentoCriadoresEmpreendedores,
+		className: "lg:col-span-1"
 	},
 ]
 ---
@@ -127,6 +132,7 @@ const segmentos = [
 <Layout
 	title="GA Food Wholesaler | Private Label & Brand Development"
 	description="Você tem a ideia. Nós cuidamos do resto. Uma rota só, do diagnóstico ao lançamento, pra transformar sua ideia numa marca própria real."
+	image="/images/blog/como-criar-marca-propria-de-cafe.jpg"
 >
 	<header
 		id="site-header"
@@ -143,21 +149,36 @@ const segmentos = [
 				<a href="#metodo">Método</a>
 				<a href="#cafe">Café Private Label</a>
 				<a href="#segmentos">Para quem é</a>
+				<a href="/blog/">Blog</a>
 			</nav>
-			<a
-				href="#contato"
-				class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-1)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-2)] active:scale-95"
-			>
-				Fale com um Consultor GA
-			</a>
+			<div class="flex items-center gap-3">
+				<a
+					href="#contato"
+					class="inline-flex h-9 md:h-10 items-center justify-center rounded-full bg-primary px-4 md:px-5 text-xs md:text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-1)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-2)] active:scale-95"
+				>
+					<span class="hidden sm:inline">Fale com um Consultor GA</span>
+					<span class="sm:hidden">Consultor GA</span>
+				</a>
+				<button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[4px] p-2 z-50 relative" aria-label="Abrir menu">
+					<span class="block h-[2px] w-5 bg-foreground transition-all duration-300 origin-center"></span>
+					<span class="block h-[2px] w-5 bg-foreground transition-all duration-300"></span>
+					<span class="block h-[2px] w-5 bg-foreground transition-all duration-300 origin-center"></span>
+				</button>
+			</div>
 		</div>
-		<div class="absolute inset-x-0 bottom-0 h-px overflow-hidden" aria-hidden="true">
+		<div id="mobile-menu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300 md:hidden">
+			<a href="#metodo" class="text-2xl font-light text-foreground mobile-link">Método</a>
+			<a href="#cafe" class="text-2xl font-light text-foreground mobile-link">Café Private Label</a>
+			<a href="#segmentos" class="text-2xl font-light text-foreground mobile-link">Para quem é</a>
+			<a href="/blog/" class="text-2xl font-light text-foreground mobile-link">Blog</a>
+		</div>
+		<div class="absolute inset-x-0 bottom-0 h-px overflow-hidden z-50" aria-hidden="true">
 			<div id="scroll-progress" class="h-full w-full origin-left scale-x-0 bg-primary"></div>
 		</div>
 	</header>
 
 	<main>
-		<section class="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-background pt-32 pb-24">
+		<section class="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-background pt-24 pb-16">
 			<div
 				id="hero-atmosphere"
 				class="absolute inset-y-0 right-0 z-0 w-full opacity-25 will-change-transform sm:opacity-60 md:w-[72%] md:opacity-100"
@@ -167,7 +188,7 @@ const segmentos = [
 			<div class="hero-grid relative z-20 mx-auto w-full max-w-6xl px-6">
 				<h1
 					data-reveal
-					class="hero-titulo text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] font-light tracking-[-0.045em] text-balance text-foreground lg:max-w-[15ch]"
+					class="hero-titulo text-[clamp(2.5rem,5.6vw,4.75rem)] leading-[0.98] font-light tracking-[-0.04em] text-balance text-foreground"
 				>
 					Você tem a ideia.<br />Nós cuidamos do resto.
 				</h1>
@@ -183,7 +204,7 @@ const segmentos = [
 				<div
 					data-reveal
 					style="--reveal-delay:200ms"
-					class="hero-pacote mx-auto w-full max-w-[17rem] sm:max-w-[20rem] lg:mx-0 lg:max-w-[21rem] lg:justify-self-end"
+					class="hero-pacote mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:mx-0 lg:max-w-none lg:justify-self-end"
 				>
 					<HeroPacote
 						client:load
@@ -227,44 +248,89 @@ const segmentos = [
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="mx-auto max-w-2xl text-center">
 					<h2 class="text-4xl font-light tracking-[-0.04em] text-foreground sm:text-5xl">Private Label 360°.</h2>
-					<p class="mt-5 text-muted-foreground">
-						Sete etapas, cada uma com equipe e processo próprios. Contrate como projeto completo
-						ou só a etapa que sua marca precisa agora.
+					<p class="mt-5 text-lg text-muted-foreground">
+						Uma estrutura integrada para desenvolver sua marca própria.
 					</p>
 				</div>
 
 				<div class="mt-24">
 					<RouteMethod stages={stages} client:visible />
 				</div>
+				
+				<div class="mt-32 mx-auto max-w-3xl text-center" data-reveal>
+					<p class="text-2xl font-light leading-relaxed text-foreground tracking-[-0.02em] md:text-3xl">
+						Serviços independentes ou projeto completo, de acordo com a necessidade da marca. <br class="hidden md:block" />
+						A GA é o parceiro para coordenar a jornada.
+					</p>
+					<div class="mt-10">
+						<a
+							href="#contato"
+							class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-[var(--shadow-lift-2)] transition-all hover:bg-primary/90 hover:shadow-[var(--shadow-lift-3)] active:scale-95"
+						>
+							Fale com um Consultor GA
+							<ArrowRight className="size-4" />
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 
-		<section id="cafe" class="bg-background">
-			<div class="grid md:grid-cols-2 md:items-stretch">
-				<div class="order-1 aspect-4/3 md:order-2 md:aspect-auto">
-					<Image
-						src={verticalCafe}
-						alt="Sessão de degustação técnica de café private label"
-						class="h-full w-full object-cover"
-						widths={[480, 768, 1024, 1440]}
-						sizes="(min-width: 768px) 50vw, 100vw"
-					/>
-				</div>
-				<div class="order-2 px-6 py-16 md:order-1 md:flex md:py-28 md:pr-14 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-20">
-					<div class="md:my-auto">
-						<h2 class="text-3xl leading-[1.1] font-light tracking-[-0.03em] text-balance text-foreground sm:text-4xl">
-							Café Private Label
+		<section id="cafe" class="bg-background py-28 border-t border-border">
+			<div class="mx-auto max-w-7xl px-6">
+				<!-- Header -->
+				<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-10 md:mb-24" data-reveal>
+					<div class="max-w-3xl">
+						<h2 class="text-4xl font-light leading-[1.05] tracking-[-0.04em] text-balance text-foreground sm:text-5xl">
+							Desenvolvimento de Café Private Label.<br class="hidden md:block" />
+							<span class="text-muted-foreground">Do grão à xícara exclusiva.</span>
 						</h2>
-						<p class="mt-6 max-w-md text-muted-foreground">
-							Café é onde nossa curadoria, torra e degustação técnica mostram o padrão que
-							aplicamos a qualquer produto que passa pela nossa esteira. Não é o limite do que
-							fazemos, é a prova.
+					</div>
+					<div class="max-w-md shrink-0">
+						<p class="text-lg text-muted-foreground">
+							Nossa vertical mais madura. Temos acesso direto aos produtores e estrutura completa de laboratório para desenhar o perfil sensorial exato da sua marca.
 						</p>
-						<a
-							href="#contato"
-							class="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-						>
-							Falar sobre a linha de café
+					</div>
+				</div>
+
+				<!-- Bento 5-cells -->
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+					<!-- Cell 1 (Image 2-cols) -->
+					<div class="relative min-h-[24rem] overflow-hidden rounded-3xl shadow-[var(--shadow-lift-2)] md:col-span-2" data-reveal style="--reveal-delay: 0ms">
+						<Image src={blocoCafe1} alt="Curadoria de café verde nas fazendas" class="absolute inset-0 h-full w-full object-cover" />
+					</div>
+
+					<!-- Cell 2 (Text - Step 1) -->
+					<div class="flex flex-col justify-end rounded-3xl bg-secondary p-10 shadow-[var(--shadow-lift-1)] md:col-span-1" data-reveal style="--reveal-delay: 100ms">
+						<span class="mb-6 tabular-nums text-5xl font-light text-primary/30">1</span>
+						<h3 class="mb-3 text-xl font-medium tracking-[-0.01em] text-foreground">Curadoria de Matéria-Prima</h3>
+						<p class="text-sm leading-relaxed text-muted-foreground">
+							Seleção nas origens em fazendas certificadas. Arábica, robusta e variedades exclusivas, com rastreabilidade total desde o plantio.
+						</p>
+					</div>
+
+					<!-- Cell 3 (Text - Step 2) -->
+					<div class="flex flex-col justify-end rounded-3xl bg-secondary p-10 shadow-[var(--shadow-lift-1)] md:col-span-1" data-reveal style="--reveal-delay: 200ms">
+						<span class="mb-6 tabular-nums text-5xl font-light text-primary/30">2</span>
+						<h3 class="mb-3 text-xl font-medium tracking-[-0.01em] text-foreground">Blends e Perfis de Torra</h3>
+						<p class="text-sm leading-relaxed text-muted-foreground">
+							Testes de torra em laboratório e cupping profissional para equilibrar acidez, corpo e doçura na criação de um perfil sensorial único.
+						</p>
+					</div>
+
+					<!-- Cell 4 (Image 1-col) -->
+					<div class="relative min-h-[24rem] overflow-hidden rounded-3xl shadow-[var(--shadow-lift-2)] md:col-span-1" data-reveal style="--reveal-delay: 300ms">
+						<Image src={blocoCafe2} alt="Torra e provas sensoriais de café" class="absolute inset-0 h-full w-full object-cover" />
+					</div>
+
+					<!-- Cell 5 (Text - Step 3) -->
+					<div class="flex flex-col justify-end rounded-3xl bg-primary p-10 text-primary-foreground shadow-[var(--shadow-lift-2)] md:col-span-1" data-reveal style="--reveal-delay: 400ms">
+						<span class="mb-6 tabular-nums text-5xl font-light text-primary-foreground/30">3</span>
+						<h3 class="mb-3 text-xl font-medium tracking-[-0.01em] text-primary-foreground">Especificações & Embalagem</h3>
+						<p class="mb-8 text-sm leading-relaxed text-primary-foreground/80">
+							Fichas técnicas detalhadas e design de embalagem focado na identidade da sua marca, garantindo exclusividade de ponta a ponta.
+						</p>
+						<a href="#contato" class="inline-flex w-fit items-center gap-2 text-sm font-medium hover:underline">
+							Fale com um Consultor GA
 							<ArrowRight className="size-4" />
 						</a>
 					</div>
@@ -274,16 +340,29 @@ const segmentos = [
 
 		<section id="segmentos" class="bg-muted py-28">
 			<div class="mx-auto max-w-6xl px-6">
-				<h2 class="max-w-xl text-3xl font-light tracking-[-0.03em] text-balance text-foreground sm:text-4xl">
-					Seis públicos. Uma mesma estrutura.
-				</h2>
+				<!-- Header -->
+				<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-10" data-reveal>
+					<div class="max-w-2xl">
+						<h2 class="text-4xl font-light leading-[1.05] tracking-[-0.04em] text-balance text-foreground sm:text-5xl">
+							Para diferentes modelos de negócio.<br class="hidden md:block" />
+							<span class="text-muted-foreground">Uma única estrutura de ponta.</span>
+						</h2>
+					</div>
+					<div class="max-w-md shrink-0">
+						<p class="text-lg text-muted-foreground">
+							Seja qual for o seu canal de vendas ou o momento da sua marca, nossa linha de produção adapta-se exatamente ao seu cenário.
+						</p>
+					</div>
+				</div>
 
-				<div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{
-						segmentos.map((segmento) => (
+						segmentos.map((segmento, i) => (
 							<a
 								href="#contato"
-								class="group relative block aspect-4/5 overflow-hidden rounded-2xl shadow-[var(--shadow-lift-1)] transition-shadow duration-500 hover:shadow-[var(--shadow-lift-3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+								data-reveal
+								style={`--reveal-delay:${i * 80}ms`}
+								class={`group relative block h-full min-h-[20rem] overflow-hidden rounded-2xl shadow-[var(--shadow-lift-1)] transition-shadow duration-500 hover:shadow-[var(--shadow-lift-3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${segmento.className || ""}`}
 							>
 								<Image
 									src={segmento.imagem}
@@ -309,44 +388,59 @@ const segmentos = [
 			</div>
 		</section>
 
-		<section id="contato" class="atmosphere-warm bg-secondary py-28">
-			<div class="mx-auto max-w-3xl px-6 text-center">
-				<h2 class="text-4xl leading-[1.1] font-light tracking-[-0.04em] text-balance text-foreground sm:text-5xl">
-					Sua marca. Seu produto. Nossa estrutura.
-				</h2>
-				<p class="mt-6 text-muted-foreground">
-					Conta pra gente o que você quer colocar no mercado. A resposta vem com os próximos
-					passos reais do diagnóstico, não com uma proposta genérica.
-				</p>
+		<section id="contato" class="atmosphere-warm bg-secondary py-28 relative overflow-hidden border-t border-border">
+			<div class="mx-auto max-w-7xl px-6">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+					
+					<!-- Left: Text and Info -->
+					<div data-reveal>
+						<p class="text-xs font-semibold tracking-[0.15em] text-primary uppercase mb-6">Por que a GA Food</p>
+						<h2 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-light leading-[1.05] tracking-[-0.04em] text-balance text-foreground mb-6">
+							Um parceiro para reduzir complexidade.
+						</h2>
+						<p class="text-lg text-muted-foreground text-balance mb-12">
+							Você coloca sua personalidade e energia no negócio.<br class="hidden xl:block" />
+							Nós cuidamos da estrutura do projeto.
+						</p>
+						
+						<!-- Grid Contacts -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-border/60 pt-10">
+							<div>
+								<p class="text-[0.65rem] font-medium text-muted-foreground uppercase tracking-widest mb-2">E-mail</p>
+								<a href="mailto:tranding@gafood.com.br" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
+									tranding@gafood.com.br
+								</a>
+							</div>
+							<div>
+								<p class="text-[0.65rem] font-medium text-muted-foreground uppercase tracking-widest mb-2">WhatsApp</p>
+								<a href="https://wa.me/553196777753" target="_blank" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
+									+55 31 9677-7753
+								</a>
+							</div>
+							<div>
+								<p class="text-[0.65rem] font-medium text-muted-foreground uppercase tracking-widest mb-2">Site</p>
+								<a href="https://gafood.com.br" target="_blank" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
+									gafood.com.br
+								</a>
+							</div>
+							<div>
+								<p class="text-[0.65rem] font-medium text-muted-foreground uppercase tracking-widest mb-2">Instagram</p>
+								<a href="https://www.instagram.com/gafoodwholesaler/" target="_blank" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
+									@gafoodwholesaler
+								</a>
+							</div>
+						</div>
+					</div>
 
-				<div class="mt-10">
-					<ContactChat whatsappNumber="5531967777753" client:visible />
+					<!-- Right: Interactive Chat -->
+					<div data-reveal style="--reveal-delay: 200ms" class="relative">
+						<!-- Glow background -->
+						<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 via-primary/5 to-transparent rounded-[3rem] blur-xl"></div>
+						<div class="relative">
+							<ContactChat whatsappNumber="553196777753" client:visible />
+						</div>
+					</div>
 				</div>
-
-				<p class="mt-8 text-sm text-muted-foreground">
-					Prefere outro canal?
-					<a href="mailto:tranding@gafood.com.br" class="text-primary underline-offset-4 hover:underline">
-						E-mail
-					</a>
-					<span class="px-1.5 text-border">·</span>
-					<a
-						href="https://wa.me/5531967777753"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-primary underline-offset-4 hover:underline"
-					>
-						WhatsApp
-					</a>
-					<span class="px-1.5 text-border">·</span>
-					<a
-						href="https://instagram.com/gafoodb2b"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-primary underline-offset-4 hover:underline"
-					>
-						Instagram
-					</a>
-				</p>
 			</div>
 		</section>
 	</main>
@@ -368,6 +462,7 @@ const segmentos = [
 						<li><a href="#metodo" class="transition-colors hover:text-primary">Private Label 360°</a></li>
 						<li><a href="#cafe" class="transition-colors hover:text-primary">Café Private Label</a></li>
 						<li><a href="#segmentos" class="transition-colors hover:text-primary">Para quem é</a></li>
+						<li><a href="/blog/" class="transition-colors hover:text-primary">Blog &amp; Artigos</a></li>
 						<li><a href="#contato" class="transition-colors hover:text-primary">Falar com um consultor</a></li>
 					</ul>
 				</nav>
@@ -382,22 +477,22 @@ const segmentos = [
 						</li>
 						<li>
 							<a
-								href="https://wa.me/5531967777753"
+								href="https://wa.me/553196777753"
 								target="_blank"
 								rel="noopener noreferrer"
 								class="tabular-nums transition-colors hover:text-primary"
 							>
-								31 96777-7753
+								+55 31 9677-7753
 							</a>
 						</li>
 						<li>
 							<a
-								href="https://instagram.com/gafoodb2b"
+								href="https://www.instagram.com/gafoodwholesaler/"
 								target="_blank"
 								rel="noopener noreferrer"
 								class="transition-colors hover:text-primary"
 							>
-								@gafoodb2b
+								@gafoodwholesaler
 							</a>
 						</li>
 					</ul>
